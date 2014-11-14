@@ -4,11 +4,12 @@ $this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Login");
 
 <div class="page-header">
 	<center>
-	<h1><img src="<?php echo Yii::app()->baseUrl ?>/images/logo.png" class="img-rounded" alt="Acceso restringido"><small> acceso a usuarios registrados</small></h1></center>
+	<img src="<?php echo Yii::app()->baseUrl ?>/images/cabecera.png" class="img-rounded" alt="Acceso restringido"></center>
 </div>
 
 <div class="row-fluid">
-	 <div class="span6 offset3">
+	<div class="span3">&nbsp;</div>
+	 <div class="span6">
 
 <?php if(Yii::app()->user->hasFlash('loginMessage')): ?>
 
@@ -27,12 +28,12 @@ $this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Login");
 	
 	<div class="row">
 		<?php echo CHtml::activeLabelEx($model,'username'); ?>
-		<?php echo CHtml::activeTextField($model,'username') ?>
+		<?php echo CHtml::activeTextField($model,'username',array('class'=>'span3')) ?>
 	</div>
 	
 	<div class="row">
 		<?php echo CHtml::activeLabelEx($model,'password'); ?>
-		<?php echo CHtml::activePasswordField($model,'password') ?>
+		<?php echo CHtml::activePasswordField($model,'password',array('class'=>'span3')) ?>
 	</div>
 	
 	<div class="row rememberMe">
@@ -78,5 +79,6 @@ $form = new CForm(array(
     ),
 ), $model);
 ?>
-	</div><!-- offset3 -->
+	</div><!-- span6 -->
+	<div class="span3">&nbsp;</div>
 </div><!-- row-fluid -->

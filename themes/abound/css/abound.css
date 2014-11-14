@@ -638,3 +638,6 @@ div.product-chooser{
       border-right-color: #fcf8e3;
       border-bottom-color: #fcf8e3;
     }
+    .table thead>tr>th.vert-align{
+      vertical-align: middle;
+    }

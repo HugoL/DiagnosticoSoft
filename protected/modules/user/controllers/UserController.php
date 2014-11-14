@@ -24,7 +24,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('view', 'listarHijos', 'verUsuario','observacion'),
+				'actions'=>array('view', 'listarHijos', 'verUsuario','observacion','test'),
 				'users'=>array('@'),
 			),
 			array('allow',
@@ -139,6 +139,45 @@ class UserController extends Controller
 			$this->render('observacion',array(
 				'model'=>$user,
 				'observacion'=>$observacion,
+			));
+		}else{
+			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');
+		}
+	}
+
+	public function actionTest( $id ){
+		
+		$id = htmlentities(strip_tags($id));
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'user_id = :user_id';
+		$criteria->params = array(':user_id' => $id);
+		$user = Profile::model()->find($criteria);
+		
+		//tiene que ser hijo para poder crear una observacion
+		$interruptor = false;
+		if( Yii::app()->getModule('user')->esAlgunAdmin() || $user->id_padre == Yii::app()->user->id ){
+			$interruptor = true;
+		}
+		if( $user->id_padre != Yii::app()->user->id ){
+			$nietos = $this->dameMisDescendientes();
+			foreach ($nietos as $key => $nieto) {
+				if( $nieto->id_padre == Yii::app()->user->id ){
+					$interruptor = true;
+				}
+			}
+		}
+
+		if( $interruptor ){
+			$tests = Test::model()->findAll();
+			
+			//$this->performAjaxValidation(array($model,$profile));
+			if( isset($_POST['Test']) ){			
+			
+			}
+
+			$this->render('test',array(
+				'model'=>$user,
+				'test'=>$tests,
 			));
 		}else{
 			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');
