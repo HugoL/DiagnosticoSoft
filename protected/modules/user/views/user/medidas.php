@@ -14,9 +14,9 @@
     				<div class="ficha">
 					<ul class="nav nav-tabs">  
 						<li><?php echo CHtml::link('Datos',array('user/verUsuario/id/'.$model->user_id)); ?></li> 
-						<li class="active"><a href="#">Observación</a></li>   
-						<li><?php echo CHtml::link('Test',array('user/test/id/'.$model->user_id));?></li>
-						<li><a href="#">Medidas</a></li>			    		
+						<li><?php echo CHtml::link('Observación',array('user/observacion/id/'.$user->id));?></li>   
+						<li><?php echo CHtml::link('Test',array('user/test/id/'.$user->id));?></li>
+						<li class="active"><a href="#">Medidas</a></li>			    		
 					</ul>
 					<div class="contenido">
 						<?php if(Yii::app()->user->hasFlash('success')):?>
@@ -29,11 +29,11 @@
 		    				    <?php echo Yii::app()->user->getFlash('error'); ?>
 		    				</div>
 						<?php endif; ?>
-						<?php $this->renderPartial('_formobservacion', array('model'=>$observacion,'user'=>$model)); ?>
+						<?php $this->renderPartial('_medidas', array('model'=>$medida,'user'=>$model)); ?>
 					</div><!-- contenido -->
 					</div><!-- /ficha -->
     			</div><!-- /row-fluid -->
     		<?php else: ?>
     			<div class="alert alert-warning">No se ha definido ningún usuario</div>
     		<?php endif;?>
-   </div>
+</div>

@@ -52,10 +52,10 @@
 	<?php endforeach; ?>
 	<tr>
 		<td></td>
-		<td>Total: <span id="totalsanguinea"></span></td>
-		<td>Total: <span id="totallinfatica"></span></td>
-		<td>Total: <span id="totalbiliosa"></span></td>
-		<td>Total: <span id="totalnerviosa"></span></td>
+		<td>Total: <span class="badge badge-success" id="totalsanguinea"></span></td>
+		<td>Total: <span class="badge badge-warning" id="totallinfatica"></span></td>
+		<td>Total: <span class="badge badge-info" id="totalbiliosa"></span></td>
+		<td>Total: <span class="badge badge-important" id="totalnerviosa"></span></td>
 	</tr>
 	</tbody>
 </table>
@@ -67,53 +67,70 @@
 		<div class="alert alert-info">No se ha definido una morfolgía para este cliente</div>
 	<?php endif; ?>
 </div>
-<div id="resultado">Morfología calculada: <span id="calculado"></span></div>
+<div id="resultado" class="alert alert-warning"><center><h3>Morfología calculada:  <span id="calculado">No especificada</span></center></h3></div>
+<div class="clearfix">&nbsp;</div>
 <?php $url_action = CHtml::normalizeUrl(array('/user/ajaxCalcularMorfologia')); ?>
 
 <?php Yii::app()->getClientScript()->registerScript("calcularMorfologia",
     "
     $(document).ready(function(){
-    	var map = {};
     	var sanguinea = 0;
     	var linfatica = 0;
     	var biliosa = 0;
     	var nerviosa = 0;
+    	var gordito = '';
+    	var delgadito = '';
     	$('#totalsanguinea').html(sanguinea);
 		$('#totallinfatica').html(linfatica);
 		$('#totalbiliosa').html(biliosa);
 		$('#totalnerviosa').html(nerviosa);
 
 	    $('input:radio').change(function(){
+	    	var sanguinea = 0;
+    		var linfatica = 0;
+    		var biliosa = 0;
+    		var nerviosa = 0;
 	    	var fila = $(this).attr('id');
-			var respuesta = $(this).val();
-			
-			map[fila] = respuesta;
+			var respuesta = $(this).val();			
 
-			console.log(map);
+			var radios = $('input:radio:checked').val();
 
-			/*for (fila in map) {
-    			switch (map[i]) {
+			//console.log(radios);
+
+			$('input:checked').each(function () {
+        		switch ( $(this).val() ) {
     				case 'sanguinea':
-    					++sanguinea;
-    					$('#totalsanguinea').html(sanguinea);
+    					++sanguinea;    					
     					break;
     				case 'linfatica':
-    					++linfatica;
-    					$('#totallinfatica').html(linfatica);
+    					++linfatica;    					
     					break;
     				case 'biliosa':
-    					++biliosa;
-    					$('#totalbiliosa').html(biliosa);
+    					++biliosa;    					
     					break;
     				case 'nerviosa':
-    					++nerviosa;
-    					$('#totalnerviosa').html(nerviosa);
+    					++nerviosa;    					
     					break;
     				default:
   
     					break;
     			}
-			}*/
+    		});
+			$('#totalsanguinea').html(sanguinea);
+			$('#totallinfatica').html(linfatica);
+			$('#totalbiliosa').html(biliosa);
+			$('#totalnerviosa').html(nerviosa);
+
+			var mayor = Math.max(sanguinea, linfatica, biliosa, nerviosa);
+
+			if( mayor == sanguinea )
+				$('#calculado').html('Sanguínea');
+			if( mayor == linfatica )
+				$('#calculado').html('Linfática');
+			if( mayor == biliosa )
+				$('#calculado').html('Biliosa');
+			if( mayor == nerviosa )
+				$('#calculado').html('Nerviosa');
 		}); 
 	});
     ",CClientScript::POS_LOAD)  ?>

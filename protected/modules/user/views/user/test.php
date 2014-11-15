@@ -8,14 +8,14 @@
     				'toggle'=>false,
     				)); ?></center></div>
     		<?php if( !empty($model) ): ?>
-    		<h1>Datos de <?php echo  CHtml::encode($model->firstname." ".$model->lastname); ?></h1>
+    		<h1>Ficha de <?php echo  CHtml::encode($model->firstname." ".$model->lastname); ?></h1>
 
     			<div class="row-fluid">
     				<div class="ficha">
 					<ul class="nav nav-tabs">  
 						<li><?php echo CHtml::link('Datos',array('user/verUsuario/id/'.$model->user_id)); ?></li> 
-						<li><a href="#">Observación</a></li>   
-						<li class="active"><?php echo CHtml::link('Datos',array('user/test/id/'.$model->user_id)); ?></li>
+						<li><?php echo CHtml::link('Observación',array('user/observacion/id/'.$user->id));?></li>   
+						<li class="active"><a href="#">Test</a></li>
 						<li><a href="#">Medidas</a></li>			    		
 					</ul>
 					<div class="contenido">

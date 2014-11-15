@@ -184,6 +184,45 @@ class UserController extends Controller
 		}
 	}
 
+	public function actionMedidas( $id ){
+		
+		$id = htmlentities(strip_tags($id));
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'user_id = :user_id';
+		$criteria->params = array(':user_id' => $id);
+		$user = Profile::model()->find($criteria);
+		
+		//tiene que ser hijo para poder introducir las medidas
+		$interruptor = false;
+		if( Yii::app()->getModule('user')->esAlgunAdmin() || $user->id_padre == Yii::app()->user->id ){
+			$interruptor = true;
+		}
+		if( $user->id_padre != Yii::app()->user->id ){
+			$nietos = $this->dameMisDescendientes();
+			foreach ($nietos as $key => $nieto) {
+				if( $nieto->id_padre == Yii::app()->user->id ){
+					$interruptor = true;
+				}
+			}
+		}
+
+		if( $interruptor ){
+			$medidas = Medida::model()->findAll();
+			
+			//$this->performAjaxValidation(array($model,$profile));
+			if( isset($_POST['Test']) ){			
+			
+			}
+
+			$this->render('medidas',array(
+				'model'=>$user,
+				'medida'=>$medidas,
+			));
+		}else{
+			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');
+		}
+	}
+
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

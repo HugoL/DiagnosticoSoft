@@ -8,7 +8,7 @@
     				'toggle'=>false,
     				)); ?></center></div>
     		<?php if( !empty($user) ): ?>
-    			<h1>Datos de <?php echo $user->profile->firstname." ".$user->profile->lastname; ?></h1>
+    			<h1>Ficha de <?php echo $user->profile->firstname." ".$user->profile->lastname; ?></h1>
     			<div class="row-fluid">
     				<div class="ficha">
 					<ul class="nav nav-tabs">  
