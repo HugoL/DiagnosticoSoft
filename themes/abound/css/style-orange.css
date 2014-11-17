@@ -78,6 +78,12 @@ ul.yiiPager .selected a {
   margin-bottom: 30px;
   background-color: #FF8839;
   border-radius: 6px;
+  background-color: rgba(254, 116, 0, 1);
+    background-image: linear-gradient(to bottom, #ff6300, #ff8226);
+    background-repeat: repeat-x;
+    border-color: #d85515;
+    color: #eee;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1) inset, 0px -1px 10px rgba(0, 0, 0, 0.1);
 }
 .hero-unit-orange .row{
   color: #fff;
