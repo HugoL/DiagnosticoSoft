@@ -3,11 +3,11 @@
 	<tr>
 		<th class="vert-align"><h3>Test Morfológico</h3></th>
 		<th>
-			<center><img src="<?php echo Yii::app()->baseUrl ?>/images/sanguinea.jpg" class="img-rounded" alt="Sanguínea"><br/>Sanguínea</center>
-		</th>
-		<th>
 			<center><img src="<?php echo Yii::app()->baseUrl ?>/images/linfatica.jpg" class="img-rounded" alt="Linfática"><br/>Linfática</center>			
 		</th>
+		<th>
+			<center><img src="<?php echo Yii::app()->baseUrl ?>/images/sanguinea.jpg" class="img-rounded" alt="Sanguínea"><br/>Sanguínea</center>
+		</th>		
 		<th>
 			<center><img src="<?php echo Yii::app()->baseUrl ?>/images/biliosa.jpg" class="img-rounded" alt="Biliosa"><br/>Biliosa</center>
 		</th>
@@ -19,19 +19,19 @@
 	<tbody>
 	<?php foreach ($model as $key => $test) : ?>
 		<tr>
-			<th><?php echo CHtml::encode($test->pregunta); ?></th>
+			<th><?php echo CHtml::encode($test->pregunta); ?></th>			
+			<td><?php echo CHtml::encode($test->respuestalinfatica);  ?>
+				<?php echo CHtml::radioButton($test->id, false, array(
+    	                             'value'=>'linfatica',
+   	                                 'name'=>'linfatica'.$test->id,
+    	                             'uncheckValue'=>null
+	                             )); ?>
+			</td>
 			<td>
 				<?php echo CHtml::encode($test->respuestasanguinea);  ?>
 				<?php echo CHtml::radioButton($test->id, false, array(
     	                             'value'=>'sanguinea',
    	                                 'name'=>'sanguinea_'.$test->id,
-    	                             'uncheckValue'=>null
-	                             )); ?>
-			</td>
-			<td><?php echo CHtml::encode($test->respuestalinfatica);  ?>
-				<?php echo CHtml::radioButton($test->id, false, array(
-    	                             'value'=>'linfatica',
-   	                                 'name'=>'linfatica'.$test->id,
     	                             'uncheckValue'=>null
 	                             )); ?>
 			</td>

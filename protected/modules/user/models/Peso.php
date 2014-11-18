@@ -31,7 +31,7 @@ class Peso extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('peso, fecha, observaciones, id_usuario', 'required'),
+			array('peso, fecha', 'required'),
 			array('id_usuario', 'numerical', 'integerOnly'=>true),
 			array('peso', 'numerical'),
 			// The following rule is used by search().
@@ -48,7 +48,7 @@ class Peso extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'id0' => array(self::BELONGS_TO, 'Users', 'id'),
+			'usuario' => array(self::BELONGS_TO, 'Users', 'id'),
 		);
 	}
 

@@ -24,7 +24,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('view', 'listarHijos', 'verUsuario','observacion','test'),
+				'actions'=>array('view', 'listarHijos', 'verUsuario','observacion','test','medidas','peso'),
 				'users'=>array('@'),
 			),
 			array('allow',
@@ -207,16 +207,85 @@ class UserController extends Controller
 		}
 
 		if( $interruptor ){
-			$medidas = Medida::model()->findAll();
-			
+			$zonas = Zona::model()->findAll();
+			$medidas = new Medidasusuario;
 			//$this->performAjaxValidation(array($model,$profile));
-			if( isset($_POST['Test']) ){			
-			
-			}
+			if (isset($_POST['Medidasusuario'])) {
+		        $valid=true;
+		        foreach ($_POST['Medidasusuario'] as $j=>$model){
+		            if (isset($_POST['Medidasusuario'][$j])) {
+		                $models[$j]=new Medidasusuario; // if you had static model only
+		                $models[$j]->attributes=$model;
+		                $valid=$models[$j]->validate() && $valid;
+		            }
+		        }
+		        if ($valid) {
+		            $i=0;
+		            while (isset($models[$i])) {
+		                $models[$i++]->save(false);// models have already been validated
+		            }
+		            // anything else that you want to do, for example a redirect to admin page
+		            $this->redirect(array('medidas/id/'.$id));
+		        }
+		    	}
 
 			$this->render('medidas',array(
-				'model'=>$user,
-				'medida'=>$medidas,
+				'user'=>$user,
+				'zonas'=>$zonas,
+				'medidas'=>$medidas,
+			));
+		}else{
+			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');
+		}
+	}
+
+	public function actionPeso( $id ){
+		
+		$id = htmlentities(strip_tags($id));
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'user_id = :user_id';
+		$criteria->params = array(':user_id' => $id);
+		$user = Profile::model()->find($criteria);
+		
+		//tiene que ser hijo para poder crear una observacion
+		$interruptor = false;
+		if( Yii::app()->getModule('user')->esAlgunAdmin() || $user->id_padre == Yii::app()->user->id ){
+			$interruptor = true;
+		}
+		if( $user->id_padre != Yii::app()->user->id ){
+			$nietos = $this->dameMisDescendientes();
+			foreach ($nietos as $key => $nieto) {
+				if( $nieto->id_padre == Yii::app()->user->id ){
+					$interruptor = true;
+				}
+			}
+		}
+
+		if( $interruptor ){
+			$peso = new Peso;
+			$criteria2 = new CDbCriteria;
+			$criteria2->condition = 'id_usuario = :id_usuario';
+			$criteria2->params = array(':id_usuario' => $user->user_id);
+			$pesos = Peso::model()->findAll( $criteria2 );			
+			//$this->performAjaxValidation(array($model,$profile));
+			if( isset($_POST['Peso']) ){
+				$peso->attributes=$_POST['Peso'];
+				$peso->id_usuario = $user->user_id;
+				if( !isset($peso->fecha))
+					$peso->fecha = date('Y-m-d',strtotime($peso->fecha));
+				if( $peso->save() ){
+					$peso = new Peso;
+					Yii::app()->user->setFlash('success', "El peso se ha guardado correctamente!");
+				}else
+					Yii::app()->user->setFlash('error', "No se ha podido guardar el peso");	
+
+
+			}
+
+			$this->render('peso',array(
+				'user'=>$user,
+				'peso'=>$peso,
+				'pesos'=>$pesos,
 			));
 		}else{
 			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');

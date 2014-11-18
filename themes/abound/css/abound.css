@@ -641,3 +641,6 @@ div.product-chooser{
     .table thead>tr>th.vert-align{
       vertical-align: middle;
     }
+    .contenido{
+      padding: 20px;
+    }

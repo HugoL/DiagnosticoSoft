@@ -1,7 +1,7 @@
 <div class="row-fluid">
 	<div class="span12"><center><?php $this->widget('bootstrap.widgets.TbButton', array(
 		'label'=>'Listado de clientes',
-    				'type'=>'inverse', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+    				'type'=>'primary', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
     				'size'=>'large', // null, 'large', 'small' or 'mini'
     				'icon'=>'arrow-left white',
     				'url'=>array('user/listarHijos'),
@@ -16,7 +16,8 @@
 						<li><?php echo CHtml::link('Datos',array('user/verUsuario/id/'.$model->user_id)); ?></li> 
 						<li class="active"><a href="#">Observación</a></li>   
 						<li><?php echo CHtml::link('Test',array('user/test/id/'.$model->user_id));?></li>
-						<li><a href="#">Medidas</a></li>			    		
+						<li><?php echo CHtml::link('Medidas',array('user/medidas/id/'.$model->user_id));?></li>
+						<li><?php echo CHtml::link('Peso',array('user/peso/id/'.$model->user_id));?></li>			    		
 					</ul>
 					<div class="contenido">
 						<?php if(Yii::app()->user->hasFlash('success')):?>
@@ -29,7 +30,7 @@
 		    				    <?php echo Yii::app()->user->getFlash('error'); ?>
 		    				</div>
 						<?php endif; ?>
-						<?php $this->renderPartial('_formobservacion', array('model'=>$observacion,'user'=>$model)); ?>
+						<?php $this->renderPartial('_observacion', array('model'=>$observacion,'user'=>$model)); ?>
 					</div><!-- contenido -->
 					</div><!-- /ficha -->
     			</div><!-- /row-fluid -->

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-11-2014 a las 01:46:54
+-- Tiempo de generación: 19-11-2014 a las 00:44:11
 -- Versión del servidor: 5.5.40-0ubuntu0.14.04.1
 -- Versión de PHP: 5.5.9-1ubuntu4.5
 
@@ -114,6 +114,7 @@ CREATE TABLE IF NOT EXISTS `om_centros` (
 CREATE TABLE IF NOT EXISTS `om_medidasusuarios` (
   `id` int(11) NOT NULL,
   `fecha` date NOT NULL,
+  `valor` float NOT NULL,
   `id_zona` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -185,7 +186,15 @@ CREATE TABLE IF NOT EXISTS `om_pesos` (
   `id_usuario` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_usuario` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=8 ;
+
+--
+-- Volcado de datos para la tabla `om_pesos`
+--
+
+INSERT INTO `om_pesos` (`id`, `peso`, `fecha`, `observaciones`, `id_usuario`) VALUES
+(1, 65, '2014-11-17 23:00:00', '', 15),
+(7, 63.2, '2014-11-18 23:00:00', '', 15);
 
 -- --------------------------------------------------------
 
@@ -213,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `om_profiles` (
   PRIMARY KEY (`user_id`),
   KEY `rol` (`rol`),
   KEY `id_padre` (`id_padre`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Volcado de datos para la tabla `om_profiles`
@@ -222,7 +231,8 @@ CREATE TABLE IF NOT EXISTS `om_profiles` (
 INSERT INTO `om_profiles` (`user_id`, `lastname`, `firstname`, `direccion`, `poblacion`, `provincia`, `codigo_postal`, `telefono`, `movil`, `rol`, `id_padre`, `pdf`, `cuentabancaria`, `morfologia`, `fechanacimiento`, `altura`) VALUES
 (1, 'Admin', 'Administrator', '', '', '', '', '', '', 1, 1, '', '', '', '0000-00-00', 0),
 (8, 'Langa Roy', 'Hugo', 'adas', 'asaass', 'aaaa', '50897', '676555555', '', 4, 1, '', '', '', '0000-00-00', 0),
-(15, 'Murillo', 'Laura', 'c/san frontonio,1', 'Épila', 'Zaragoza', '50290', '976817131', '636602253', 5, 8, NULL, '', '', '0000-00-00', 0);
+(15, 'Murillo', 'Laura', 'c/san frontonio,1', 'Épila', 'Zaragoza', '50290', '976817131', '636602253', 5, 8, NULL, '', '', '0000-00-00', 0),
+(16, 'Langa Roy', 'Elea', 'c/san frontonio,1', 'Épila', 'Zaragoza', '50290', '677587477', '', 5, 8, NULL, '', '', '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -354,7 +364,7 @@ CREATE TABLE IF NOT EXISTS `om_users` (
   UNIQUE KEY `email` (`email`),
   KEY `status` (`status`),
   KEY `superuser` (`superuser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Volcado de datos para la tabla `om_users`
@@ -362,8 +372,9 @@ CREATE TABLE IF NOT EXISTS `om_users` (
 
 INSERT INTO `om_users` (`id`, `username`, `password`, `email`, `activkey`, `create_at`, `lastvisit_at`, `superuser`, `status`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-10-02 21:06:21', '2014-11-13 22:26:13', 1, 1),
-(8, 'hugo', 'ae4d176ebaa6d584a7450f02e8415dd3', 'hlanga@hlanga.es', '6895e3ea807e735a354e442200d92af7', '2014-10-20 10:47:04', '2014-11-13 22:39:44', 0, 1),
-(15, 'lmurillo', 'b65a61f1f7960b00603cb4453a1590eb', 'lugardelaura@gmail.com', '2458d3d6a68dd2435344301f1c14e11c', '2014-11-13 22:08:19', '0000-00-00 00:00:00', 0, 0);
+(8, 'hugo', 'ae4d176ebaa6d584a7450f02e8415dd3', 'hlanga@hlanga.es', '6895e3ea807e735a354e442200d92af7', '2014-10-20 10:47:04', '2014-11-18 22:42:15', 0, 1),
+(15, 'lmurillo', 'b65a61f1f7960b00603cb4453a1590eb', 'lugardelaura@gmail.com', '2458d3d6a68dd2435344301f1c14e11c', '2014-11-13 22:08:19', '0000-00-00 00:00:00', 0, 0),
+(16, 'elealanga', '775d9c7f3672b4e2f41fe5d2aeb1c319', 'eleazgz@hotmail.com', '5cb5aedcf544ea48534d87ea971d7509', '2014-11-18 16:38:07', '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -376,7 +387,17 @@ CREATE TABLE IF NOT EXISTS `om_zonas` (
   `nombre` varchar(128) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `om_zonas`
+--
+
+INSERT INTO `om_zonas` (`id`, `nombre`, `descripcion`) VALUES
+(1, 'Hombros', ''),
+(2, 'Pecho', ''),
+(3, 'Cintura', ''),
+(4, 'Cadera', '');
 
 -- --------------------------------------------------------
 
@@ -425,8 +446,8 @@ ALTER TABLE `om_centros`
 -- Filtros para la tabla `om_medidasusuarios`
 --
 ALTER TABLE `om_medidasusuarios`
-  ADD CONSTRAINT `om_medidasusuarios_ibfk_2` FOREIGN KEY (`id_zona`) REFERENCES `om_zonas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `om_medidasusuarios_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `om_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `om_medidasusuarios_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `om_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `om_medidasusuarios_ibfk_2` FOREIGN KEY (`id_zona`) REFERENCES `om_zonas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `om_observaciones`
@@ -438,7 +459,7 @@ ALTER TABLE `om_observaciones`
 -- Filtros para la tabla `om_pesos`
 --
 ALTER TABLE `om_pesos`
-  ADD CONSTRAINT `om_pesos_ibfk_1` FOREIGN KEY (`id`) REFERENCES `om_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `om_pesos_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `om_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `om_profiles`
