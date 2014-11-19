@@ -35,19 +35,12 @@
 		<?php echo $form->error($model,'email'); ?>
 	</div>
 
-	<?php if( Yii::app()->getModule('user')->esAlgunAdmin() ): ?>
 	<div class="row">
 		<?php echo $form->labelEx($model,'status'); ?>
 		<?php echo $form->dropDownList($model,'status',User::itemAlias('UserStatus')); ?>
 		<?php echo $form->error($model,'status'); ?>
+		<br/><small>Activo: el cliente puede acceder a la plataforma. Inactivo: el cliente NO puede acceder a la plataforma</small>
 	</div>
-	<?php else: ?>
-	<div class="row" style="display:none">
-		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->dropDownList($model,'status',User::itemAlias('UserStatus')); ?>
-		<?php echo $form->error($model,'status'); ?>
-	</div>
-	<?php endif; ?>
 	<?php 
 		$profileFields=$profile->getFields();
 		if ($profileFields) {

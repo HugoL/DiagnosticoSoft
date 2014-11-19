@@ -131,10 +131,9 @@ class User extends CActiveRecord
 	
 	public static function itemAlias($type,$code=NULL) {
 		$_items = array(
-			'UserStatus' => array(
-				self::STATUS_NOACTIVE => UserModule::t('Not active'),
+			'UserStatus' => array(				
 				self::STATUS_ACTIVE => UserModule::t('Active'),
-				self::STATUS_BANNED => UserModule::t('Banned'),
+				self::STATUS_NOACTIVE => UserModule::t('Not active'),
 			),
 			'AdminStatus' => array(
 				'0' => UserModule::t('No'),

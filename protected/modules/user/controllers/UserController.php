@@ -87,11 +87,42 @@ class UserController extends Controller
 
 	public function actionVerUsuario( $id ){
 		$id = strip_tags( $id );
-
+		$edad = 0;
+		$interruptor = false;
 		if( !empty($id) && $id != 0 ){
 			$user = User::model()->findbyPk( $id );
-			$rol = Rol::model()->findbyPk($user->profile->rol);
-			$this->render('verUsuario', array('user'=>$user, 'rol'=>$rol));
+			$profile = $user->profile;
+			if( Yii::app()->getModule('user')->esAlgunAdmin() || $profile->id_padre == Yii::app()->user->id || $profile->user_id = Yii::app()->user->id ){
+				$interruptor = true;
+			}
+			if( $profile->id_padre != Yii::app()->user->id && $profile->user_id != Yii::app()->user->id ){
+				$nietos = $this->dameMisDescendientes();
+				foreach ($nietos as $key => $nieto) {
+					if( $nieto->id_padre == Yii::app()->user->id ){
+						$interruptor = true;
+					}
+				}
+			}
+
+			if( $interruptor ){
+				//calculo la edad
+				if( !empty($user->profile->fechanacimiento) && strcmp($user->profile->fechanacimiento,'0000-00-00') != 0 ){
+					//explode the date to get month, day and year
+					$fechanacimiento = date( 'd-m-Y',strtotime($user->profile->fechanacimiento) );
+	  				$birthDate = explode("-", $fechanacimiento);
+	  				//get age from date or birthdate
+	  				$edad = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
+	    				? ((date("Y") - $birthDate[2]) - 1)
+	    				: (date("Y") - $birthDate[2]));
+				}
+				$rol = Rol::model()->findbyPk($user->profile->rol);
+				if( strcmp($rol->nombre, 'cliente') == 0 )
+					$this->render('vistaCliente', array('user'=>$user, 'rol'=>$rol,'edad'=>$edad));
+				else
+					$this->render('verUsuario', array('user'=>$user, 'rol'=>$rol,'edad'=>$edad));
+			}else{
+				$this->redirect(CHttpRequest::getUrlReferrer());
+			}
 		}else{
 			$this->redirect(CHttpRequest::getUrlReferrer());
 		}	

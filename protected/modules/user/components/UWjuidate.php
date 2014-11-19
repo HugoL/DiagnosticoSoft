@@ -7,7 +7,7 @@ class UWjuidate {
 	 */
 	public $params = array(
 		'ui-theme'=>'base',
-		'language'=>'en',
+		'language'=>'es',
 	);
 	
 	/**
@@ -59,6 +59,8 @@ class UWjuidate {
 		
 		$id = $htmlOptions['id'];
 		$options['dateFormat'] = 'yy-mm-dd';
+		$options['changeMonth'] = true; //added by me to support month changing
+		$options['changeYear'] = true; //added by me to support year changing
 		$options=CJavaScript::encode($options);
 		
 		$basePath=Yii::getPathOfAlias('user.views.asset');

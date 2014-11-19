@@ -165,8 +165,20 @@ class AdminController extends Controller
 	{
 		$model=$this->loadModel();
 		$profile=$model->profile;
-		//si no es administrador no podrá actualizar los datos
-		if( Yii::app()->getModule('user')->esAlgunAdmin() ){
+	
+		if( Yii::app()->getModule('user')->esAlgunAdmin() || $profile->id_padre == Yii::app()->user->id ){
+			$interruptor = true;
+		}
+		if( $profile->id_padre != Yii::app()->user->id ){
+			$nietos = $this->dameMisDescendientes();
+			foreach ($nietos as $key => $nieto) {
+				if( $nieto->id_padre == Yii::app()->user->id ){
+					$interruptor = true;
+				}
+			}
+		}
+
+		if( $interruptor ){
 			$this->performAjaxValidation(array($model,$profile));
 			if(isset($_POST['User'])){
 				$model->attributes=$_POST['User'];
@@ -179,19 +191,17 @@ class AdminController extends Controller
 						$model->activkey=Yii::app()->controller->module->encrypting(microtime().$model->password);
 					}
 					$model->superuser = 0; //no se pueden crear superusuarios
-					if( !Yii::app()->getModule('user')->esAlgunAdmin() ){
-						$model->status = 0; //Solo los administradores pueden crear usuarios activos
-					}
 					$model->save();
 					$profile->save();
-					$this->redirect(array('view','id'=>$model->id));
+					$this->redirect(array('user/verUsuario','id'=>$model->id));
 				}else $profile->validate();
 			}
-			//Solo le paso la lista de los roles que puede elegir el usuario (aquellos cuyo id sea inferior al suyo)
 		}else{
 			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');
 			Yii::app()->end;
 		}
+			//Solo le paso la lista de los roles que puede elegir el usuario (aquellos cuyo id sea inferior al suyo)
+		
 		$mirol = Yii::app()->getModule('user')->user()->profile->rol;
 		$criteria = new CDbCriteria();
 		$criteria->condition = 'id >:id';
@@ -287,6 +297,34 @@ class AdminController extends Controller
 		$debug .=  $dump->dumpAsString($var);
 		$debug .= "</pre></div>\n";
 		Yii::app()->params['debugContent'] .=$debug;
+	}
+
+	protected function dameMisDescendientes(){
+		//cojo los hijos
+		$criteria = new CDbCriteria;
+		$criteria->select = 'user_id';
+		$criteria->condition = 'id_padre=:id_padre';
+		$criteria->params = array(':id_padre' => Yii::app()->user->id);
+		$hijos = Profile::model()->findAll( $criteria );			
+
+		$arrayhijos = array();			
+		foreach ($hijos as $hijo) {
+			array_push($arrayhijos, $hijo->user_id);
+		}
+
+		//cojo los nietos
+		$criteria3 = new CDbCriteria;
+		$criteria3->select = 'user_id';
+		$criteria3->addInCondition('id_padre',$arrayhijos, 'OR');
+		$nietos = Profile::model()->findAll( $criteria3 );
+
+		array_push($arrayhijos, Yii::app()->user->id);
+
+		foreach ($nietos as $nieto) {
+			array_push($arrayhijos, $nieto->user_id);
+		}
+
+		return $arrayhijos;
 	}
 	
 }
