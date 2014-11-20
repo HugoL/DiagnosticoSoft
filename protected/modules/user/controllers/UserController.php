@@ -24,7 +24,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('view', 'listarHijos', 'verUsuario','observacion','test','medidas','peso'),
+				'actions'=>array('view', 'listarHijos', 'verUsuario','observacion','test','medidas','peso','tratamiento'),
 				'users'=>array('@'),
 			),
 			array('allow',
@@ -73,16 +73,25 @@ class UserController extends Controller
 			$descendientes = $this->dameMisDescendientes();
 			$criteria = new CDbCriteria;
 			$criteria->addInCondition('id_padre',$descendientes,'OR');
+			$criteria->order = 'lastname';
 		}else{
 			$criteria = new CDbCriteria;
 		}
 		if( !empty($pag) ){
 			//calcular el offset y el limit correspondientes a la página
 		}
+
 		$hijos = Profile::model()->findAll( $criteria );	
 		$roles = Rol::model()->findAll();	
 
-		$this->render( 'hijos',array('hijos'=>$hijos, 'roles'=>$roles) );
+    	$count=Profile::model()->count($criteria);
+    	$pages=new CPagination($count);
+
+    	// results per page
+    	$pages->pageSize=20;
+    	$pages->applyLimit($criteria);
+
+		$this->render( 'hijos',array('hijos'=>$hijos, 'roles'=>$roles, 'paginas' => $pages) );
 	}
 
 	public function actionVerUsuario( $id ){
@@ -200,7 +209,6 @@ class UserController extends Controller
 
 		if( $interruptor ){
 			$tests = Test::model()->findAll();
-			var_dump($_POST);
 			
 			//$this->performAjaxValidation(array($model,$profile));
 			if( isset($_POST['Profile']) ){			
@@ -339,6 +347,45 @@ class UserController extends Controller
 		}
 	}
 
+	public function actionTratamiento( $id ){
+		
+		$id = htmlentities(strip_tags($id));
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'user_id = :user_id';
+		$criteria->params = array(':user_id' => $id);
+		$user = Profile::model()->find($criteria);
+		
+		//tiene que ser hijo para poder crear un tratamiento
+		if( $this->esDescendiente( $user ) ){
+			$tratamiento = new Tratamiento;
+			$criteria2 = new CDbCriteria;
+			$criteria2->condition = 'id_usuario = :id_usuario';
+			$criteria2->params = array(':id_usuario' => $user->user_id);
+						
+			//$this->performAjaxValidation(array($model,$profile));
+			if( isset($_POST['Tratamiento']) ){
+				$tratamiento->attributes=$_POST['Tratamiento'];
+				$tratamiento->id_usuario = $user->user_id;
+
+				if( $tratamiento->save() ){
+					$tratamiento = new Tratamiento;
+					Yii::app()->user->setFlash('success', "El tratamiento se ha guardado correctamente!");
+				}else
+					Yii::app()->user->setFlash('error', "No se ha podido guardar el tratamiento");	
+
+
+			}
+			$tratamientos = Tratamiento::model()->findAll( $criteria2 );
+			$this->render('tratamiento',array(
+				'model'=>$user,
+				'tratamiento'=>$tratamiento,
+				'tratamientos'=>$tratamientos,
+			));
+		}else{
+			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');
+		}
+	}
+
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
@@ -371,6 +418,21 @@ class UserController extends Controller
 				throw new CHttpException(404,'The requested page does not exist.');
 		}
 		return $this->_model;
+	}
+
+	protected function esDescendiente( $user ){
+		if( $user->id_padre == Yii::app()->user->id ){
+			return true;
+		}
+		if( $user->id_padre != Yii::app()->user->id ){
+			$nietos = $this->dameMisDescendientes();
+			foreach ($nietos as $key => $nieto) {
+				if( $nieto->id_padre == Yii::app()->user->id ){
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	protected function dameMisDescendientes(){

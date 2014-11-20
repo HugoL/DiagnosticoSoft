@@ -644,3 +644,11 @@ div.product-chooser{
     .contenido{
       padding: 20px;
     }
+    .caracteristicas{
+      font-size: 16px;
+      line-height: 25px;
+      color: #5D5D5D;
+    }
+    .caracteristicas p{
+      padding-bottom: 10px;
+    }

@@ -24,11 +24,44 @@
 		    				    <?php echo Yii::app()->user->getFlash('error'); ?>
 		    				</div>
 						<?php endif; ?>
-						<?php $this->renderPartial('_test', array('model'=>$test,'user'=>$model)); ?>
+						<?php $this->renderPartial('_formtratamiento', array('model'=>$tratamiento,'user'=>$model)); ?>
+
+					<div class="clearfix">&nbsp;</div>
+					<?php if( !empty($tratamientos) ): ?>
+						<h3>Tratamientos del cliente:</h3>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Tratamiento</th>
+									<th>Fecha Inicio</th>
+									<th>Fecha Fin</th>
+									<th>Descripción</th>
+									<th>Finalizado</th>
+									<th>Precio</th>
+									<th>Sesiones</th>
+									<th>Observaciones</th>
+								</tr>
+							</thead>
+						<?php foreach ($tratamientos as $key => $tratamiento) : ?>
+							<tr>
+								<td><?php echo $tratamiento->tratamiento; ?></td>
+								<td><?php echo date('d-m-Y',strtotime($tratamiento->fecha_inicio)); ?></td>
+								<td><?php echo date('d-m-Y',strtotime($tratamiento->fecha_fin)); ?></td>
+								<td><?php echo $tratamiento->descripcion; ?></td>
+								<td><?php echo $tratamiento->finalizado == 1 ? "Sí" : "No" ; ?></td>
+								<td><?php echo $tratamiento->precio; ?>
+									<td><?php echo $tratamiento->sesiones; ?></td>
+								<td><?php echo $tratamiento->observaciones; ?>
+							</tr>
+						<?php endforeach; ?>	
+					<?php else: ?>		
+						<div class="alert alert-info">El cliente no tiene asignado ningún tratamiento todavía</div>
+					<?php endif; ?>
+
 					</div><!-- contenido -->
 					</div><!-- /ficha -->
     			</div><!-- /row-fluid -->
     		<?php else: ?>
     			<div class="alert alert-warning">No se ha definido ningún usuario</div>
     		<?php endif;?>
-</div>
+   </div>

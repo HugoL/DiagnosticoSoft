@@ -99,7 +99,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=diagnosticosoft_bd',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '523360',
+			'password' => '',
 			'charset' => 'utf8',
             'tablePrefix' => 'om_',
 		),

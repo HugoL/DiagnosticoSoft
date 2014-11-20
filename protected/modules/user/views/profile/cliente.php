@@ -21,7 +21,7 @@
         <div class="span4">
             <center><div class="product-chooser-item">
                 <div class="well-orange">
-                 <a href="#"><img src="<?php echo Yii::app()->baseUrl ?>/images/corazon.png" class="img-rounded" alt="Información morfológica"></a>
+                 <a href="<?php echo Yii::app()->baseUrl.'/user/morfologia/verCaracteristicas/id/'.$model->id; ?>"><img src="<?php echo Yii::app()->baseUrl ?>/images/corazon.png" class="img-rounded" alt="Información morfológica"></a>
                 <div class="col-xs-8 col-sm-8 col-md-12 col-lg-12">
                     <span class="title">Información morfológica</span>
                     <span class="description">Ver información sobre mi morfología</span>

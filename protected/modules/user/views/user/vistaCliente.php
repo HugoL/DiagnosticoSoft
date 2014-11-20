@@ -11,13 +11,7 @@
     			<h1>Ficha de <?php echo $user->profile->firstname." ".$user->profile->lastname; ?></h1>
     			<div class="row-fluid">
     				<div class="ficha">
-					<ul class="nav nav-tabs">  
-						<li class="active"><a href="#">Datos</a></li> 
-						<li><?php echo CHtml::link('Observación',array('user/observacion/id/'.$user->id));?></li>   
-						<li><?php echo CHtml::link('Test',array('user/test/id/'.$user->id));?></li>
-						<li><?php echo CHtml::link('Medidas',array('user/medidas/id/'.$user->id));?></li>
-						<li><?php echo CHtml::link('Peso',array('user/peso/id/'.$user->id));?></li>	
-					</ul>
+					<?php $this->renderPartial('_menuficha',array('model' => $user->profile)); ?>
 					<div class="contenido">
 						<div class="row-fluid">
 							<div class="well well-small span3">Tipo de usuario: <strong><?php echo $rol->nombre; ?></strong></div>

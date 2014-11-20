@@ -32,21 +32,7 @@
             </div>
             </div></center>
         </div>
-            <div class="span4">
-            <center><div class="product-chooser-item">
-                <div class="well-orange">
-                 <a href="<?php echo Yii::app()->baseUrl.'/user/venta/index'; ?>"><img src="<?php echo Yii::app()->baseUrl ?>/images/informe.png" class="img-rounded" alt="Diagnóstico"></a>
-                <div class="col-xs-8 col-sm-8 col-md-12 col-lg-12">
-                    <span class="title">Diagnóstico</span>
-                    <span class="description">Realizar un diagnóstico</span>
-                </div>
-            </div>
-            </div></center>
-        </div>
-    </div>
-    <div class="row-fluid">
-       
-         <div class="span4">
+        <div class="span4">
             <center><div class="product-chooser-item">
                 <div class="well-orange">
                  <a href="<?php echo Yii::app()->baseUrl.'/user/profile'; ?>"><img src="<?php echo Yii::app()->baseUrl ?>/images/preferencias.png" class="img-rounded" alt="Perfil"></a>
@@ -57,6 +43,8 @@
             </div>
             </div></center>
         </div>
+    </div>
+    <div class="row-fluid">         
         <div class="span4">
             <center><div class="product-chooser-item">
                 <div class="well-orange">

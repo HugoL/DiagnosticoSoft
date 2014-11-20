@@ -12,13 +12,7 @@
 
     			<div class="row-fluid">
     				<div class="ficha">
-					<ul class="nav nav-tabs">  
-						<li><?php echo CHtml::link('Datos',array('user/verUsuario/id/'.$model->user_id)); ?></li> 
-						<li class="active"><a href="#">Observación</a></li>   
-						<li><?php echo CHtml::link('Test',array('user/test/id/'.$model->user_id));?></li>
-						<li><?php echo CHtml::link('Medidas',array('user/medidas/id/'.$model->user_id));?></li>
-						<li><?php echo CHtml::link('Peso',array('user/peso/id/'.$model->user_id));?></li>			    		
-					</ul>
+					<?php $this->renderPartial('_menuficha',array('model' => $model)); ?>
 					<div class="contenido">
 						<?php if(Yii::app()->user->hasFlash('success')):?>
 		    				<div class="alert alert-success">

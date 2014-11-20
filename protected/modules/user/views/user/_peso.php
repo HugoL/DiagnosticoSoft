@@ -6,6 +6,7 @@
 							// See class documentation of CActiveForm for details on this.
 							'enableAjaxValidation'=>false,
 						)); ?>
+							<div class="thumbnail">
 							<div class="row-fluid span12">
 							<div class="span3">&nbsp;</div>
 							<div class="span1">
@@ -23,7 +24,8 @@
                                 'showAnim'=>'fold',
                                 ),
                                 'htmlOptions'=>array(
-                                'style'=>'height:20px;'
+                                'style'=>'height:20px;',
+                                'class'=>'input-small',
                                 ),
                         )); ?>
 							</div>
@@ -37,4 +39,5 @@
 						<div class="row-fluid">
 							<center><?php echo CHtml::submitButton($peso->isNewRecord ? 'Insertar' : 'Guardar', array('class' => 'btn btn-primary btn-large')); ?></center>
 						</div>
+					</div>
 						<?php $this->endWidget(); ?>
