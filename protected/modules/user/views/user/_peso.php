@@ -7,12 +7,13 @@
 							'enableAjaxValidation'=>false,
 						)); ?>
 							<div class="row-fluid span12">
-							<div class="span4">
+							<div class="span3">&nbsp;</div>
+							<div class="span1">
 							<?php echo $form->labelEx($peso,'peso'); ?>
-							<?php echo $form->textField($peso,'peso',array('class'=>'span4')); ?>
+							<?php echo $form->textField($peso,'peso',array('class' => 'span11')); ?>
 							<?php echo $form->error($peso,'peso'); ?>
 							</div>
-							<div class="span4">
+							<div class="span2">
 								<?php echo $form->labelEx($peso,'fecha'); ?>
 							<?php $this->widget('zii.widgets.jui.CJuiDatePicker',array(
                                 'name'=>'Peso[fecha]',
@@ -26,11 +27,12 @@
                                 ),
                         )); ?>
 							</div>
-							<div class="span4">
+							<div class="span3">
 							<?php echo $form->labelEx($peso,'observaciones'); ?>
-							<?php echo $form->textArea($peso,'observaciones',array('rows'=>6, 'cols'=>50)); ?>
+							<?php echo $form->textArea($peso,'observaciones',array('rows'=>3, 'cols'=>60)); ?>
 							<?php echo $form->error($peso,'observaciones'); ?>
 							</div>
+							<div class="span3">&nbsp;</div>
 						</div>
 						<div class="row-fluid">
 							<center><?php echo CHtml::submitButton($peso->isNewRecord ? 'Insertar' : 'Guardar', array('class' => 'btn btn-primary btn-large')); ?></center>

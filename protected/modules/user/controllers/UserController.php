@@ -200,10 +200,16 @@ class UserController extends Controller
 
 		if( $interruptor ){
 			$tests = Test::model()->findAll();
+			var_dump($_POST);
 			
 			//$this->performAjaxValidation(array($model,$profile));
-			if( isset($_POST['Test']) ){			
-			
+			if( isset($_POST['Profile']) ){			
+				$morfologia = new Profile;
+				$morfologia->attributes = $_POST['Profile'];
+
+				$user->morfologia = $morfologia->morfologia;
+
+				$user->save();
 			}
 
 			$this->render('test',array(
@@ -241,12 +247,17 @@ class UserController extends Controller
 			$zonas = Zona::model()->findAll();
 			$medidas = new Medidasusuario;
 			//$this->performAjaxValidation(array($model,$profile));
-			if (isset($_POST['Medidasusuario'])) {
+			if (isset($_POST['Medidasusuario'])) {				
 		        $valid=true;
 		        foreach ($_POST['Medidasusuario'] as $j=>$model){
+		        	$models[] = Medidasusuario::model(); 
+		        }
+		        foreach ($_POST['Medidasusuario'] as $j=>$model){
 		            if (isset($_POST['Medidasusuario'][$j])) {
-		                $models[$j]=new Medidasusuario; // if you had static model only
+		                $models[$j] = new Medidasusuario; // if you had static model only
 		                $models[$j]->attributes=$model;
+		                if( empty($models[$j]->fecha) )
+		                	$models[$j]->fecha = date('Y-m-d');
 		                $valid=$models[$j]->validate() && $valid;
 		            }
 		        }
@@ -297,13 +308,18 @@ class UserController extends Controller
 			$criteria2 = new CDbCriteria;
 			$criteria2->condition = 'id_usuario = :id_usuario';
 			$criteria2->params = array(':id_usuario' => $user->user_id);
-			$pesos = Peso::model()->findAll( $criteria2 );			
+						
 			//$this->performAjaxValidation(array($model,$profile));
 			if( isset($_POST['Peso']) ){
 				$peso->attributes=$_POST['Peso'];
 				$peso->id_usuario = $user->user_id;
-				if( !isset($peso->fecha))
+
+				if( !empty($peso->fecha) ){
 					$peso->fecha = date('Y-m-d',strtotime($peso->fecha));
+				}else{
+					$peso->fecha = date('Y-m-d');
+				}
+
 				if( $peso->save() ){
 					$peso = new Peso;
 					Yii::app()->user->setFlash('success', "El peso se ha guardado correctamente!");
@@ -312,7 +328,7 @@ class UserController extends Controller
 
 
 			}
-
+			$pesos = Peso::model()->findAll( $criteria2 );
 			$this->render('peso',array(
 				'user'=>$user,
 				'peso'=>$peso,

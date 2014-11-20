@@ -19,7 +19,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row-fluid span12">
+	<div class="row-fluid span11 well well-small clearfix">
 		<div class="span4">
 		<?php echo $form->labelEx($model,'motivo'); ?>
 		<?php echo $form->textField($model,'motivo',array('size'=>60,'maxlength'=>128)); ?>
@@ -36,8 +36,8 @@
 		<?php echo $form->error($model,'variacionesPeso'); ?>
 		</div>
 	</div>
-	<hr/>
-	<div class="row-fluid span12">
+
+	<div class="row-fluid span11 well well-small clearfix">
 		<div class="span4">
 		<?php echo $form->labelEx($model,'pesoMax'); ?>
 		<?php echo $form->textField($model,'pesoMax'); ?>
@@ -55,7 +55,7 @@
 		</div>
 	</div>
 
-	<div class="row-fluid span12">
+	<div class="row-fluid span11 well well-small clearfix">
 		<div class="span4">
 		<?php echo $form->labelEx($model,'tallaActual'); ?>
 		<?php echo $form->textField($model,'tallaActual'); ?>
@@ -68,7 +68,7 @@
 		</div>
 	</div>
 
-	<div class="row-fluid span12">
+	<div class="row-fluid span11 well well-small clearfix">
 		<div class="span4">
 		<?php echo $form->labelEx($model,'tensionMax'); ?>
 		<?php echo $form->textField($model,'tensionMax'); ?>
@@ -81,7 +81,7 @@
 		</div>
 	</div>
 
-	<div class="row-fluid span12">
+	<div class="row-fluid span11 well well-small clearfix">
 		<div class="span4">
 		<?php echo $form->labelEx($model,'enfermedades'); ?>
 		<?php echo $form->textArea($model,'enfermedades',array('rows'=>6, 'cols'=>50)); ?>
@@ -99,7 +99,7 @@
 		</div>
 	</div>
 
-	<div class="row-fluid span12">
+	<div class="row-fluid span11 well well-small clearfix">
 		<div class="span3">
 		<?php echo $form->labelEx($model,'menstruaciones'); ?>
 		<?php echo $form->textArea($model,'menstruaciones',array('rows'=>6, 'cols'=>50)); ?>
@@ -127,7 +127,7 @@
 		</div>
 	</div>
 
-	<div class="row-fluid span12">
+	<div class="row-fluid span11 well well-small clearfix">
 		<div class="span4">
 		<?php echo $form->labelEx($model,'diuresis'); ?>
 		<?php echo $form->textArea($model,'diuresis',array('rows'=>6, 'cols'=>50)); ?>
@@ -145,7 +145,7 @@
 		</div>
 	</div>
 
-	<div class="row-fluid span12">
+	<div class="row-fluid span11 well well-small clearfix">
 		<div class="span4">
 		<?php echo $form->labelEx($model,'actividadFisica'); ?>
 		<?php echo $form->textArea($model,'actividadFisica',array('rows'=>6, 'cols'=>50)); ?>
@@ -163,7 +163,7 @@
 		</div>
 	</div>
 
-	<div class="row-fluid span12">
+	<div class="row-fluid span11 well well-small clearfix">
 		<div class="span3">
 		<?php echo $form->labelEx($model,'dolor'); ?>
 		<?php echo $form->textArea($model,'dolor',array('rows'=>6, 'cols'=>50)); ?>
@@ -188,7 +188,7 @@
 
 		<?php echo $form->hiddenField($model,'id_usuario',array('value'=>$user->user_id)); ?>
 	
-
+	<div class="clearfix">&nbsp;</div>
 	<div class="row-fluid buttons">
 	<center>	<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar',array('class'=>'btn btn-primary btn-large')); ?></center>
 	</div>

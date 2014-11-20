@@ -5,6 +5,11 @@ class User extends CActiveRecord
 	const STATUS_NOACTIVE=0;
 	const STATUS_ACTIVE=1;
 	const STATUS_BANNED=-1;
+
+	const SANGUINEA="Sanguínea";
+	const LINFATICA="Linfática";
+	const BILIOSA="Biliosa";
+	const NERVIOSA="Nerviosa";
 	
 	//TODO: Delete for next version (backward compatibility)
 	const STATUS_BANED=-1;
@@ -139,6 +144,13 @@ class User extends CActiveRecord
 				'0' => UserModule::t('No'),
 				'1' => UserModule::t('Yes'),
 			),
+			'Morfologia' => array(				
+				self::SANGUINEA => UserModule::t('Sanguínea'),
+				self::LINFATICA => UserModule::t('Linfática'),
+				self::BILIOSA => UserModule::t('Biliosa'),
+				self::NERVIOSA => UserModule::t('Nerviosa'),
+			),
+	
 		);
 		if (isset($code))
 			return isset($_items[$type][$code]) ? $_items[$type][$code] : false;

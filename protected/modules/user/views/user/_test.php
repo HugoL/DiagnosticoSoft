@@ -1,3 +1,10 @@
+<div class="row-fluid">
+	<?php if( !empty($user->morfologia)): ?>
+		<div class="alert alert-success">Morfología del cliente: <strong><?php echo $user->morfologia; ?></strong></div>
+	<?php else: ?>
+		<div class="alert alert-info">No se ha definido una morfolgía para este cliente</div>
+	<?php endif; ?>
+</div>
 <table class="table table-bordered">
 	<thead>
 	<tr>
@@ -59,16 +66,26 @@
 	</tr>
 	</tbody>
 </table>
-
-<div class="row-fluid">
-	<?php if( !empty($user->morfologia)): ?>
-		Morfología del cliente: <strong><?php echo $user->morfologia; ?></strong>
-	<?php else: ?>
-		<div class="alert alert-info">No se ha definido una morfolgía para este cliente</div>
-	<?php endif; ?>
-</div>
 <div id="resultado" class="alert alert-warning"><center><h3>Morfología calculada:  <span id="calculado">No especificada</span></center></h3></div>
 <div class="clearfix">&nbsp;</div>
+<div class="row-fluid">
+	<div class="well well-small">
+	<?php $form=$this->beginWidget('CActiveForm', array(
+							'id'=>'profile-form',
+							// Please note: When you enable ajax validation, make sure the corresponding
+							// controller action is handling ajax validation correctly.
+							// There is a call to performAjaxValidation() commented in generated controller code.
+							// See class documentation of CActiveForm for details on this.
+							'enableAjaxValidation'=>false,
+						)); ?>
+						<?php echo $form->labelEx($user,'morfologia'); ?>
+						<?php echo $form->dropDownList($user,'morfologia',User::itemAlias('Morfologia')); ?>
+
+						<?php echo $form->error($user,'morfologia'); ?>
+						<?php echo CHtml::submitButton('Guardar', array('class' => 'btn btn-primary btn-large')); ?>
+	<?php $this->endWidget(); ?>
+</div>
+</div>
 <?php $url_action = CHtml::normalizeUrl(array('/user/ajaxCalcularMorfologia')); ?>
 
 <?php Yii::app()->getClientScript()->registerScript("calcularMorfologia",

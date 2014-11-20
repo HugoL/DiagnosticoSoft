@@ -7,6 +7,7 @@ class Profile extends UActiveRecord
 	 * @var integer $user_id
 	 * @var boolean $regMode
 	 */
+
 	public $regMode = false;
 	
 	private $_model;
@@ -181,4 +182,6 @@ class Profile extends UActiveRecord
 			return $this->_model;
 		}
 	}
+
+
 }
