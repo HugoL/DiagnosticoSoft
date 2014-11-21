@@ -35,16 +35,16 @@
 	<?php foreach ($zonas as $key => $zona): ?>
 		<?php if( $zona->tipo == 1): ?>		
 			<?php echo $form->errorSummary($medidas); ?>
-			<?php if( $i == 1): ?>
+			<?php if( $i == 1 ): ?>
 				<div class="row-fluid">
 			<?php endif; ?>
 			<div class="span3">
-				<?php echo $form->hiddenField($medidas,'id_usuario',array('value'=>$user->user_id)); ?>
-				<?php echo $form->hiddenField($medidas,'id_zona',array('value'=>$zona->id)); ?>
+				<?php echo $form->hiddenField($medidas,'['.$key.']id_usuario',array('value'=>$user->user_id)); ?>
+				<?php echo $form->hiddenField($medidas,'['.$key.']id_zona',array('value'=>$zona->id)); ?>
 				<div class="control-group">
 					<?php echo $form->labelEx($medidas, $zona->nombre,array('class'=>'control-label')); ?>
-					<div class="controls"><div class="input-append"><?php echo $form->textField($medidas,'valor',array('class' => 'input-small')); ?><span class="add-on"> mm.</span></div></div>
-					<?php echo $form->error($medidas,'valor'); ?>
+					<div class="controls"><div class="input-append"><?php echo $form->textField($medidas,'['.$key.']valor',array('class' => 'input-small')); ?><span class="add-on"> cm.</span></div></div>
+					<?php echo $form->error($medidas,'[$key]valor'); ?>
 				</div><!-- /control-group -->
 			</div>		
 			<?php if( $i == 4 ): ?>

@@ -49,8 +49,8 @@
 								<td><?php echo date('d-m-Y',strtotime($tratamiento->fecha_fin)); ?></td>
 								<td><?php echo $tratamiento->descripcion; ?></td>
 								<td><?php echo $tratamiento->finalizado == 1 ? "Sí" : "No" ; ?></td>
-								<td><?php echo $tratamiento->precio; ?>
-									<td><?php echo $tratamiento->sesiones; ?></td>
+								<td><?php echo $tratamiento->precio; ?> €</td>
+								<td><?php echo $tratamiento->sesiones; ?></td>
 								<td><?php echo $tratamiento->observaciones; ?>
 							</tr>
 						<?php endforeach; ?>	

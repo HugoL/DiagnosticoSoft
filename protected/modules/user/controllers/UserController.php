@@ -237,47 +237,42 @@ class UserController extends Controller
 		$criteria->params = array(':user_id' => $id);
 		$user = Profile::model()->find($criteria);
 		
-		//tiene que ser hijo para poder introducir las medidas
-		$interruptor = false;
-		if( Yii::app()->getModule('user')->esAlgunAdmin() || $user->id_padre == Yii::app()->user->id ){
-			$interruptor = true;
-		}
-		if( $user->id_padre != Yii::app()->user->id ){
-			$nietos = $this->dameMisDescendientes();
-			foreach ($nietos as $key => $nieto) {
-				if( $nieto->id_padre == Yii::app()->user->id ){
-					$interruptor = true;
-				}
-			}
-		}
 
-		if( $interruptor ){
+		if( $this->esDescendiente($user) ){
 			$zonas = Zona::model()->findAll();
-			$medidas = new Medidasusuario;
-			//$this->performAjaxValidation(array($model,$profile));
-			if (isset($_POST['Medidasusuario'])) {				
-		        $valid=true;
-		        foreach ($_POST['Medidasusuario'] as $j=>$model){
+			$medidas = new Medidasusuario;			
+			if (isset($_POST['Medidasusuario'])) {
+		        $valid = true;
+		        $todook = true;
+		        $cuantos = 0;
+		       foreach ($_POST['Medidasusuario'] as $j=>$model){
 		        	$models[] = Medidasusuario::model(); 
 		        }
-		        foreach ($_POST['Medidasusuario'] as $j=>$model){
-		            if (isset($_POST['Medidasusuario'][$j])) {
+		        foreach ($_POST['Medidasusuario'] as $j=>$model){	        	
+		            if ( isset($_POST['Medidasusuario'][$j]) ) {            	
 		                $models[$j] = new Medidasusuario; // if you had static model only
 		                $models[$j]->attributes=$model;
 		                if( empty($models[$j]->fecha) )
 		                	$models[$j]->fecha = date('Y-m-d');
-		                $valid=$models[$j]->validate() && $valid;
+		              
+		                if( !empty($models[$j]->valor) && is_numeric($models[$j]->valor) )
+		                	if( !$models[$j]->save(false) ){
+		                		$todook = false;	                
+		                	}else{
+		                		$cuantos++;
+		                	}
 		            }
+		        }	
+
+		        if( $todook ){
+		        	if( $cuantos == 0)
+		        		Yii::app()->user->setFlash('warning', "No se ha guardado ninguna medida");
+		        	else
+		           		Yii::app()->user->setFlash('success', "Las medidas se han guardado correctamente!");
+		        }else{
+		           	Yii::app()->user->setFlash('error', "No se han guardado las medidas, o al menos no todas. Medidas guardadas: ".$cuantos);	        
 		        }
-		        if ($valid) {
-		            $i=0;
-		            while (isset($models[$i])) {
-		                $models[$i++]->save(false);// models have already been validated
-		            }
-		            // anything else that you want to do, for example a redirect to admin page
-		            $this->redirect(array('medidas/id/'.$id));
-		        }
-		    	}
+		    }
 
 			$this->render('medidas',array(
 				'user'=>$user,
@@ -366,6 +361,17 @@ class UserController extends Controller
 			if( isset($_POST['Tratamiento']) ){
 				$tratamiento->attributes=$_POST['Tratamiento'];
 				$tratamiento->id_usuario = $user->user_id;
+
+				if( !empty($tratamiento->fecha_inicio) )
+					$tratamiento->fecha_inicio = date('Y-m-d',strtotime($tratamiento->fecha_inicio));
+				else
+					$tratamiento->fecha_inicio = date('Y-m-d');
+
+				if( !empty($tratamiento->fecha_fin) )
+					$tratamiento->fecha_fin = date('Y-m-d',strtotime($tratamiento->fecha_fin));
+				else
+					$tratamiento->fecha_fin = date('Y-m-d');
+
 
 				if( $tratamiento->save() ){
 					$tratamiento = new Tratamiento;

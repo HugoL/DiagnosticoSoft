@@ -58,9 +58,9 @@
 		</tr>
 	<?php endforeach; ?>
 	<tr>
-		<td></td>
-		<td>Total: <span class="badge badge-success" id="totalsanguinea"></span></td>
-		<td>Total: <span class="badge badge-warning" id="totallinfatica"></span></td>
+		<td></td>		
+		<td>Total: <span class="badge badge-success" id="totallinfatica"></span></td>
+		<td>Total: <span class="badge badge-warning" id="totalsanguinea"></span></td>
 		<td>Total: <span class="badge badge-info" id="totalbiliosa"></span></td>
 		<td>Total: <span class="badge badge-important" id="totalnerviosa"></span></td>
 	</tr>

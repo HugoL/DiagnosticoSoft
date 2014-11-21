@@ -24,6 +24,11 @@
 		    				    <?php echo Yii::app()->user->getFlash('error'); ?>
 		    				</div>
 						<?php endif; ?>
+						<?php if(Yii::app()->user->hasFlash('warning')):?>
+		    				<div class="alert alert-warning">
+		    				    <?php echo Yii::app()->user->getFlash('warning'); ?>
+		    				</div>
+						<?php endif; ?>
 						<?php $this->renderPartial('_medidas', array('zonas'=>$zonas,'user'=>$user,'medidas'=>$medidas)); ?>
 					</div><!-- contenido -->
 					</div><!-- /ficha -->

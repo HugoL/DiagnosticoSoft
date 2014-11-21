@@ -65,7 +65,7 @@
 		</div>
 		<div class="span3">
 		<?php echo $form->labelEx($model,'precio'); ?>
-		<?php echo $form->textField($model,'precio',array('class' => 'input-small')); ?>
+		<div class="control-group"><div class="controls"><div class="input-append"><?php echo $form->textField($model,'precio',array('class' => 'input-small')); ?><span class="add-on">€</span></div></div></div>
 		<?php echo $form->error($model,'precio'); ?>
 		</div>
 		<div class="span3">

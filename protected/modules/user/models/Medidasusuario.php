@@ -33,8 +33,9 @@ class Medidasusuario extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, fecha, id_zona, id_usuario, fecha_creacion', 'required'),
+			array('id, id_zona, id_usuario', 'required'),
 			array('id, id_zona, id_usuario', 'numerical', 'integerOnly'=>true),
+			array('valor', 'numerical'),
 			array('observaciones', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
