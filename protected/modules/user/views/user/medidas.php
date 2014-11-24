@@ -33,6 +33,29 @@
 					</div><!-- contenido -->
 					</div><!-- /ficha -->
     			</div><!-- /row-fluid -->
+
+    			<?php if( !empty($totalmedidas) ): ?>
+    				<?php $datos1 = array( );
+						  $datos1[] = array('Fecha', 'Total medidas');
+					?>
+    				<div class="row-fluid">
+    					<?php foreach ($totalmedidas as $key => $medida): ?>
+    						<?php 
+								$fecha = date('d-m-Y',strtotime($medida->fecha));
+								$datos1[] = array($fecha, floatval($medida->total)); 
+							?>
+    					<?php endforeach; ?>
+    			
+						<div class="grafica"><?php
+							 $this->widget('ext.Hzl.google.HzlVisualizationChart', array('visualization' => 'LineChart',
+					            'data' =>   $datos1,
+					            'options' => array('title' => 'Evolución medidas circulares',
+					            	'curveType' => 'function',
+
+					            ))); ?>
+						</div>
+					</div>
+    			<?php endif; ?>
     		<?php else: ?>
     			<div class="alert alert-warning">No se ha definido ningún usuario</div>
     		<?php endif;?>

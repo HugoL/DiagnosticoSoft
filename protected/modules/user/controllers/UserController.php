@@ -274,10 +274,19 @@ class UserController extends Controller
 		        }
 		    }
 
+		    //cojo las medidas del usuario para hacer la gráfica
+		    $criteria2 = new CDbCriteria;
+		    $criteria2->group = 'fecha';
+			$criteria2->select = 'sum(valor) AS total, fecha, id_zona';
+		    $criteria2->condition = 'id_usuario=:id_usuario';
+		    $criteria2->params = array(':id_usuario' => $id);
+		    $totalmedidas = Medidasusuario::model()->findAll( $criteria2 );
+
 			$this->render('medidas',array(
 				'user'=>$user,
 				'zonas'=>$zonas,
 				'medidas'=>$medidas,
+				'totalmedidas'=>$totalmedidas,
 			));
 		}else{
 			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');

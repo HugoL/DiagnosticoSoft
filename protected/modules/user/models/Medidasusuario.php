@@ -17,6 +17,7 @@
  */
 class Medidasusuario extends CActiveRecord
 {
+	public $total;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -51,7 +52,7 @@ class Medidasusuario extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idZona' => array(self::BELONGS_TO, 'Zonas', 'id_zona'),
+			'idZona' => array(self::BELONGS_TO, 'Zona', 'id_zona'),
 			'idUsuario' => array(self::BELONGS_TO, 'Users', 'id_usuario'),
 		);
 	}
