@@ -43,7 +43,7 @@
 				<?php echo $form->hiddenField($medidas,'['.$key.']id_zona',array('value'=>$zona->id)); ?>
 				<div class="control-group">
 					<?php echo $form->labelEx($medidas, $zona->nombre,array('class'=>'control-label')); ?>
-					<div class="controls"><div class="input-append"><?php echo $form->textField($medidas,'['.$key.']valor',array('class' => 'input-small')); ?><span class="add-on"> cm.</span></div></div>
+					<div class="controls"><div class="input-append"><?php echo $form->textField($medidas,'['.$key.']valor',array('class' => 'input-small')); ?><span class="add-on"> mm.</span></div></div>
 					<?php echo $form->error($medidas,'[$key]valor'); ?>
 				</div><!-- /control-group -->
 			</div>		

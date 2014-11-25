@@ -5,11 +5,11 @@
 <?php $this->widget('CLinkPager', array(
     'pages' => $paginas,
 )) ?>
-<table class="table table-condensed">
-	<tr>
+<table class="table table-condensed table-hover">
+	<tr class="info">
 		<th>Nombre</th>
 		<th>Tipo</th>
-		<th></th>
+		<th>Ver Ficha</th>
 	</tr>
 	<?php foreach ( $hijos as $hijo ): 
 		foreach ($roles as $key => $rol) {

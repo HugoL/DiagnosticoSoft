@@ -1,6 +1,6 @@
 RewriteEngine on
 
-RewriteBase /~mrjingles/DiagnosticoSoft
+RewriteBase /~hugo/DiagnosticoSoft
 
 # if a directory or a file exists, use it directly
 RewriteCond %{REQUEST_FILENAME} !-f
