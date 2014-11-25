@@ -2,11 +2,6 @@
 /* @var $this SiteController */
 /* @var $model ContactForm */
 /* @var $form CActiveForm */
-
-$this->pageTitle=Yii::app()->name . ' - Contacta con SiluSoft';
-$this->breadcrumbs=array(
-	'Contacto',
-);
 ?>
 
 <h1>Contacta con SiluSoft</h1>
@@ -59,7 +54,7 @@ Si tienes alguna duda o quieres informarnos de un problema, rellena el formulari
 	<?php endif; ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Enviar',array('class'=>'btn btn-primary btn-large')); ?>
+		<?php echo CHtml::submitButton('Enviar',array('class'=>'btn btn-info btn-large')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

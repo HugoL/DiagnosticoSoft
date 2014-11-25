@@ -5,6 +5,16 @@
 <?php $this->widget('CLinkPager', array(
     'pages' => $paginas,
 )) ?>
+
+<div class="span12">
+    <form id="custom-search-form" class="form-search form-horizontal pull-right" method="GET">
+        <div class="input-append span12">
+            <input type="text" class="search-query mac-style" placeholder="Buscar por nombre o apellidos" name="q" value="<?=isset($_GET['q']) ? CHtml::encode($_GET['q']) : '' ; ?>">
+            <button type="submit" class="btn"><i class="icon-search"></i></button>
+        </div>
+    </form>
+</div>
+
 <table class="table table-condensed table-hover">
 	<tr class="info">
 		<th>Nombre</th>

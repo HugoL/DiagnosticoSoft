@@ -57,5 +57,5 @@
 	<?php $this->endWidget(); ?>
 	</div>
 </div>
-<div class="row-fluid"><center>	<?php echo CHtml::submitButton($medidas->isNewRecord ? 'Insertar' : 'Guardar',array('class'=>'btn btn-primary btn-large')); ?></center></div>
+<div class="row-fluid"><center>	<?php echo CHtml::submitButton($medidas->isNewRecord ? 'Insertar' : 'Guardar',array('class'=>'btn btn-info btn-large')); ?></center></div>
 <div class="clearfix">&nbsp;</div>

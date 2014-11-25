@@ -190,7 +190,7 @@
 	
 	<div class="clearfix">&nbsp;</div>
 	<div class="row-fluid buttons">
-	<center>	<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar',array('class'=>'btn btn-primary btn-large')); ?></center>
+	<center>	<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar',array('class'=>'btn btn-info btn-large')); ?></center>
 	</div>
 
 <?php $this->endWidget(); ?>

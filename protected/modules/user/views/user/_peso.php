@@ -40,7 +40,7 @@
 							<div class="span3">
 								<div class="control-group">
 									<br/>
-								<?php echo CHtml::submitButton($peso->isNewRecord ? 'Insertar' : 'Guardar', array('class' => 'btn btn-primary btn-large')); ?>
+								<?php echo CHtml::submitButton($peso->isNewRecord ? 'Insertar' : 'Guardar', array('class' => 'btn btn-info btn-large')); ?>
 								</div>
 							</div>
 						</div>

@@ -1,7 +1,7 @@
 <div class="row-fluid">
 	<div class="span12"><center><?php $this->widget('bootstrap.widgets.TbButton', array(
 		'label'=>'Listado de clientes',
-    				'type'=>'primary', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+    				'type'=>'info', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
     				'size'=>'large', // null, 'large', 'small' or 'mini'
     				'icon'=>'arrow-left white',
     				'url'=>array('user/listarHijos'),
@@ -46,7 +46,7 @@
 							<?php endif; ?>
 						</div>	
 						<div class="row-fluid">
-							<div class="span12"><center><?php echo CHtml::link('Modificar',array('admin/update/id/'.$user->id),array('class' => 'btn btn-primary btn-large')); ?></center></div>
+							<div class="span12"><center><?php echo CHtml::link('Modificar',array('admin/update/id/'.$user->id),array('class' => 'btn btn-info btn-large')); ?></center></div>
 						</div>
 											
 					</div><!-- /contenido -->

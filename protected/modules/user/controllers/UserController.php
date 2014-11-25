@@ -72,7 +72,12 @@ class UserController extends Controller
 		if( !Yii::app()->getModule('user')->esAlgunAdmin() ){
 			$descendientes = $this->dameMisDescendientes();
 			$criteria = new CDbCriteria;
-			$criteria->addInCondition('id_padre',$descendientes,'OR');
+			if( isset($_GET['q']) ){
+      			$q = strip_tags($_GET['q']);
+      			$criteria->compare('firstname', $q, true, 'OR');
+      			$criteria->compare('lastname', $q, true, 'OR');
+    		}
+			$criteria->addInCondition('id_padre',$descendientes,'AND');
 			$criteria->order = 'lastname';
 		}else{
 			$criteria = new CDbCriteria;

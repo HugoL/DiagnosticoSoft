@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<?php if( !empty($user->morfologia)): ?>
-		<div class="alert alert-success">Morfología del cliente: <strong><?php echo $user->morfologia; ?></strong></div>
+		<h5><p>Morfología del cliente: <span class="label label-warning"><?php echo $user->morfologia; ?></span></p></h5>
 	<?php else: ?>
 		<div class="alert alert-info">No se ha definido una morfolgía para este cliente</div>
 	<?php endif; ?>
@@ -82,7 +82,7 @@
 						<?php echo $form->dropDownList($user,'morfologia',User::itemAlias('Morfologia')); ?>
 
 						<?php echo $form->error($user,'morfologia'); ?>
-						<?php echo CHtml::submitButton('Guardar', array('class' => 'btn btn-primary btn-large')); ?>
+						<?php echo CHtml::submitButton('Guardar', array('class' => 'btn btn-info btn-large')); ?>
 	<?php $this->endWidget(); ?>
 </div>
 </div>
