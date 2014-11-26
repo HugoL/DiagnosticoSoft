@@ -24,7 +24,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('view', 'listarHijos', 'verUsuario','observacion','test','medidas','peso','tratamiento'),
+				'actions'=>array('view', 'listarHijos', 'verUsuario','observacion','test','medidas','peso','tratamiento','recomendar','verRecomendados'),
 				'users'=>array('@'),
 			),
 			array('allow',
@@ -106,19 +106,8 @@ class UserController extends Controller
 		if( !empty($id) && $id != 0 ){
 			$user = User::model()->findbyPk( $id );
 			$profile = $user->profile;
-			if( Yii::app()->getModule('user')->esAlgunAdmin() || $profile->id_padre == Yii::app()->user->id || $profile->user_id = Yii::app()->user->id ){
-				$interruptor = true;
-			}
-			if( $profile->id_padre != Yii::app()->user->id && $profile->user_id != Yii::app()->user->id ){
-				$nietos = $this->dameMisDescendientes();
-				foreach ($nietos as $key => $nieto) {
-					if( $nieto->id_padre == Yii::app()->user->id ){
-						$interruptor = true;
-					}
-				}
-			}
 
-			if( $interruptor ){
+			if( $profile->user_id = Yii::app()->user->id || $this->esDescendiente( $profile ) ){
 				//calculo la edad
 				if( !empty($user->profile->fechanacimiento) && strcmp($user->profile->fechanacimiento,'0000-00-00') != 0 ){
 					//explode the date to get month, day and year
@@ -150,21 +139,7 @@ class UserController extends Controller
 		$criteria->params = array(':user_id' => $id);
 		$user = Profile::model()->find($criteria);
 		
-		//tiene que ser hijo para poder crear una observacion
-		$interruptor = false;
-		if( Yii::app()->getModule('user')->esAlgunAdmin() || $user->id_padre == Yii::app()->user->id ){
-			$interruptor = true;
-		}
-		if( $user->id_padre != Yii::app()->user->id ){
-			$nietos = $this->dameMisDescendientes();
-			foreach ($nietos as $key => $nieto) {
-				if( $nieto->id_padre == Yii::app()->user->id ){
-					$interruptor = true;
-				}
-			}
-		}
-
-		if( $interruptor ){
+		if(  Yii::app()->getModule('user')->esAlgunAdmin() || $this->esDescendiente( $user ) ){
 			$observacion = new Observacion;
 			$criteria2 = new CDbCriteria;
 			$criteria2->condition = 'id_usuario = :id_usuario';
@@ -200,19 +175,7 @@ class UserController extends Controller
 		
 		//tiene que ser hijo para poder crear una observacion
 		$interruptor = false;
-		if( Yii::app()->getModule('user')->esAlgunAdmin() || $user->id_padre == Yii::app()->user->id ){
-			$interruptor = true;
-		}
-		if( $user->id_padre != Yii::app()->user->id ){
-			$nietos = $this->dameMisDescendientes();
-			foreach ($nietos as $key => $nieto) {
-				if( $nieto->id_padre == Yii::app()->user->id ){
-					$interruptor = true;
-				}
-			}
-		}
-
-		if( $interruptor ){
+		if( Yii::app()->getModule('user')->esAlgunAdmin() || $this->esDescendiente( $user ) ){
 			$tests = Test::model()->findAll();
 			$morfologias = Morfologia::model()->findAll();
 			//$this->performAjaxValidation(array($model,$profile));
@@ -244,7 +207,7 @@ class UserController extends Controller
 		$user = Profile::model()->find($criteria);
 		
 
-		if( $this->esDescendiente($user) ){
+		if( Yii::app()->getModule('user')->esAlgunAdmin() || $this->esDescendiente($user) ){
 			$zonas = Zona::model()->findAll();
 			$medidas = new Medidasusuario;			
 			if (isset($_POST['Medidasusuario'])) {
@@ -309,19 +272,8 @@ class UserController extends Controller
 		
 		//tiene que ser hijo para poder crear una observacion
 		$interruptor = false;
-		if( Yii::app()->getModule('user')->esAlgunAdmin() || $user->id_padre == Yii::app()->user->id ){
-			$interruptor = true;
-		}
-		if( $user->id_padre != Yii::app()->user->id ){
-			$nietos = $this->dameMisDescendientes();
-			foreach ($nietos as $key => $nieto) {
-				if( $nieto->id_padre == Yii::app()->user->id ){
-					$interruptor = true;
-				}
-			}
-		}
+		if( Yii::app()->getModule('user')->esAlgunAdmin() || $this->esDescendiente($user) ){
 
-		if( $interruptor ){
 			$peso = new Peso;
 			$criteria2 = new CDbCriteria;
 			$criteria2->condition = 'id_usuario = :id_usuario';
@@ -366,7 +318,7 @@ class UserController extends Controller
 		$user = Profile::model()->find($criteria);
 		
 		//tiene que ser hijo para poder crear un tratamiento
-		if( $this->esDescendiente( $user ) ){
+		if( Yii::app()->getModule('user')->esAlgunAdmin() || $this->esDescendiente( $user ) ){
 			$tratamiento = new Tratamiento;
 			$criteria2 = new CDbCriteria;
 			$criteria2->condition = 'id_usuario = :id_usuario';
@@ -405,6 +357,39 @@ class UserController extends Controller
 		}else{
 			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');
 		}
+	}
+
+	public function actionRecomendar( $id ){
+		$id = htmlentities(strip_tags($id));
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'user_id = :user_id';
+		$criteria->params = array(':user_id' => $id);
+		$user = Profile::model()->find($criteria);
+		
+		//tiene que ser hijo para poder recomendar
+		if( Yii::app()->getModule('user')->esAlgunAdmin() || $this->esDescendiente( $user ) ){
+			if( isset($_POST['Profile']) ){
+				$user->attributes=$_POST['Profile'];
+				if( $user->update() ){
+					Yii::app()->user->setFlash('success', "Se han guardado las recomendaciones!");
+				}else{
+					Yii::app()->user->setFlash('error', "No se han guardado las recomendaciones");
+				}
+			}
+			$this->render('recomendar', array('model' => $user));
+		}else{
+			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');
+		}
+	}
+
+	public function actionVerRecomendados(){
+		
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'user_id = :user_id';
+		$criteria->params = array(':user_id' => Yii::app()->user->id);
+		$user = Profile::model()->find($criteria);
+		
+		$this->render('recomendados', array('user' => $user));
 	}
 
 	/**

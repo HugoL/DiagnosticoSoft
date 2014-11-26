@@ -10,7 +10,7 @@
          <div class="span4">
             <center><div class="product-chooser-item">
                 <div class="well-orange">
-                 <a href="<?php echo Yii::app()->baseUrl.'/user/user/verUsuario/id/'.$model->id; ?>"><img src="<?php echo Yii::app()->baseUrl ?>/images/usuario.png" class="img-rounded" alt="Ficha"></a>
+                 <a href="#"><img src="<?php echo Yii::app()->baseUrl ?>/images/usuario.png" class="img-rounded" alt="Ficha"></a>
                 <div class="col-xs-8 col-sm-8 col-md-12 col-lg-12">
                     <span class="title">Ficha</span>
                     <span class="description">Ver mi ficha de cliente</span>
@@ -32,7 +32,7 @@
         <div class="span4">
             <center><div class="product-chooser-item">
                 <div class="well-orange">
-                 <a href="#"><img src="<?php echo Yii::app()->baseUrl ?>/images/pulgarup.png" class="img-rounded" alt="Recomendaciones"></a>
+                 <a href="<?php echo Yii::app()->baseUrl.'/user/user/verRecomendados' ?>"><img src="<?php echo Yii::app()->baseUrl ?>/images/pulgarup.png" class="img-rounded" alt="Recomendaciones"></a>
                 <div class="col-xs-8 col-sm-8 col-md-12 col-lg-12">
                     <span class="title">Productos recomendados</span>
                     <span class="description">Ver productos recomendados para mí</span>
