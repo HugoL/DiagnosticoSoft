@@ -24,7 +24,7 @@
 		    				    <?php echo Yii::app()->user->getFlash('error'); ?>
 		    				</div>
 						<?php endif; ?>
-						<?php $this->renderPartial('_test', array('model'=>$test,'user'=>$model)); ?>
+						<?php $this->renderPartial('_test', array('model'=>$test,'user'=>$model,'morfologias'=>$morfologias)); ?>
 					</div><!-- contenido -->
 					</div><!-- /ficha -->
     			</div><!-- /row-fluid -->

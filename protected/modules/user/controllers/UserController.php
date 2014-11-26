@@ -214,7 +214,7 @@ class UserController extends Controller
 
 		if( $interruptor ){
 			$tests = Test::model()->findAll();
-			
+			$morfologias = Morfologia::model()->findAll();
 			//$this->performAjaxValidation(array($model,$profile));
 			if( isset($_POST['Profile']) ){			
 				$morfologia = new Profile;
@@ -228,6 +228,7 @@ class UserController extends Controller
 			$this->render('test',array(
 				'model'=>$user,
 				'test'=>$tests,
+				'morfologias'=>$morfologias,
 			));
 		}else{
 			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');

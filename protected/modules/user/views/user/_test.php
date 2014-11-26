@@ -4,22 +4,23 @@
 	<?php else: ?>
 		<div class="alert alert-info">No se ha definido una morfolgía para este cliente</div>
 	<?php endif; ?>
+	<p><small>Para ver características de cada morfología, pinchar en el nombre de la morfología</small></p>
 </div>
 <table class="table table-bordered">
 	<thead>
 	<tr>
 		<th class="vert-align"><h3>Test Morfológico</h3></th>
 		<th>
-			<center><img src="<?php echo Yii::app()->baseUrl ?>/images/linfatica.jpg" class="img-rounded" alt="Linfática"><br/>Linfática</center>			
+			<center><img src="<?php echo Yii::app()->baseUrl ?>/images/linfatica.jpg" class="img-rounded" alt="Linfática"><br/><a href="#modalLinfatica" role="button" class="btn" data-toggle="modal">Linfática</a></center>			
 		</th>
 		<th>
-			<center><img src="<?php echo Yii::app()->baseUrl ?>/images/sanguinea.jpg" class="img-rounded" alt="Sanguínea"><br/>Sanguínea</center>
+			<center><img src="<?php echo Yii::app()->baseUrl ?>/images/sanguinea.jpg" class="img-rounded" alt="Sanguínea"><br/><a href="#modalSanguinea" role="button" class="btn" data-toggle="modal">Sanguínea</a></center>
 		</th>		
 		<th>
-			<center><img src="<?php echo Yii::app()->baseUrl ?>/images/biliosa.jpg" class="img-rounded" alt="Biliosa"><br/>Biliosa</center>
+			<center><img src="<?php echo Yii::app()->baseUrl ?>/images/biliosa.jpg" class="img-rounded" alt="Biliosa"><br/><a href="#modalBiliosa" role="button" class="btn" data-toggle="modal">Biliosa</a></center>
 		</th>
 		<th>
-			<center><img src="<?php echo Yii::app()->baseUrl ?>/images/nerviosa.jpg" class="img-rounded" alt="Nerviosa"><br/>Nerviosa</center>
+			<center><img src="<?php echo Yii::app()->baseUrl ?>/images/nerviosa.jpg" class="img-rounded" alt="Nerviosa"><br/><a href="#modalNerviosa" role="button" class="btn" data-toggle="modal">Nerviosa</a></center>
 		</th>
 	</tr>
 	</thead>
@@ -68,6 +69,75 @@
 </table>
 <div id="resultado" class="alert alert-warning"><center><h3>Morfología calculada:  <span id="calculado">No especificada</span></center></h3></div>
 <div class="clearfix">&nbsp;</div>
+<!-- Modals -->
+			<div id="modalLinfatica" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel">Linfática</h3>
+			</div>
+			<div class="modal-body">
+			<p><?php foreach ($morfologias as $key => $morfologia) :
+				if( strcmp($morfologia->nombre,"Linfática") == 0 ): ?>
+					<div><?php echo $morfologia->caracteristicas; ?></div>
+				<?php endif;
+			endforeach ?></p>
+			</div>
+			<div class="modal-footer">
+			<button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+			</div>
+			</div>
+
+			<div id="modalSanguinea" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel">Sanguínea</h3>
+			</div>
+			<div class="modal-body">
+			<p><?php foreach ($morfologias as $key => $morfologia) :
+				if( strcmp($morfologia->nombre,"Sanguínea") == 0 ): ?>
+					<div><?php echo $morfologia->caracteristicas; ?></div>
+				<?php endif;
+			endforeach ?></p>
+			</div>
+			<div class="modal-footer">
+			<button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+			</div>
+			</div>
+
+			<div id="modalBiliosa" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel">Biliosa</h3>
+			</div>
+			<div class="modal-body">
+			<p><?php foreach ($morfologias as $key => $morfologia) :
+				if( strcmp($morfologia->nombre,"Biliosa") == 0 ): ?>
+					<div><?php echo $morfologia->caracteristicas; ?></div>
+				<?php endif;
+			endforeach ?></p>
+			</div>
+			<div class="modal-footer">
+			<button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+			</div>
+			</div>
+
+			<div id="modalNerviosa" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel">Nerviosa</h3>
+			</div>
+			<div class="modal-body">
+			<p><?php foreach ($morfologias as $key => $morfologia) :
+				if( strcmp($morfologia->nombre,"Nerviosa") == 0 ): ?>
+					<div><?php echo $morfologia->caracteristicas; ?></div>
+				<?php endif;
+			endforeach ?></p>
+			</div>
+			<div class="modal-footer">
+			<button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+			</div>
+			</div>
+
 <div class="row-fluid">
 	<div class="well well-small">
 	<?php $form=$this->beginWidget('CActiveForm', array(
