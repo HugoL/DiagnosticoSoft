@@ -107,7 +107,7 @@ class UserController extends Controller
 			$user = User::model()->findbyPk( $id );
 			$profile = $user->profile;
 
-			if( $profile->user_id = Yii::app()->user->id || $this->esDescendiente( $profile ) ){
+			if( $profile->user_id == Yii::app()->user->id || $this->esDescendiente( $profile ) ){
 				//calculo la edad
 				if( !empty($user->profile->fechanacimiento) && strcmp($user->profile->fechanacimiento,'0000-00-00') != 0 ){
 					//explode the date to get month, day and year
@@ -119,10 +119,8 @@ class UserController extends Controller
 	    				: (date("Y") - $birthDate[2]));
 				}
 				$rol = Rol::model()->findbyPk($user->profile->rol);
-				if( strcmp($rol->nombre, 'cliente') == 0 )
-					$this->render('vistaCliente', array('user'=>$user, 'rol'=>$rol,'edad'=>$edad));
-				else
-					$this->render('verUsuario', array('user'=>$user, 'rol'=>$rol,'edad'=>$edad));
+				
+				$this->render('verUsuario', array('user'=>$user, 'model' => $profile, 'rol'=>$rol,'edad'=>$edad));
 			}else{
 				$this->redirect(CHttpRequest::getUrlReferrer());
 			}
@@ -161,7 +159,7 @@ class UserController extends Controller
 				'observacion'=>$observacion,
 			));
 		}else{
-			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');
+			$this->redirect(Yii::app()->request->baseUrl.'/site/page&view=nopermitido');
 		}
 	}
 
@@ -258,7 +256,7 @@ class UserController extends Controller
 				'totalmedidas'=>$totalmedidas,
 			));
 		}else{
-			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');
+			$this->redirect(array("site/nopermitido"));
 		}
 	}
 
@@ -427,17 +425,17 @@ class UserController extends Controller
 	}
 
 	protected function esDescendiente( $user ){
-		if( $user->id_padre == Yii::app()->user->id ){
+		if( !empty($user->id_padre) && $user->id_padre == Yii::app()->user->id ){
 			return true;
 		}
-		if( $user->id_padre != Yii::app()->user->id ){
-			$nietos = $this->dameMisDescendientes();
-			foreach ($nietos as $key => $nieto) {
-				if( $nieto->id_padre == Yii::app()->user->id ){
-					return true;
-				}
+		
+		$nietos = $this->dameMisDescendientes();
+		foreach ($nietos as $key => $nieto) {
+			if( !empty($nieto->id_padre) && $nieto->id_padre == Yii::app()->user->id ){
+				return true;
 			}
 		}
+		
 		return false;
 	}
 
