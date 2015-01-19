@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 20-11-2014 a las 14:18:17
+-- Tiempo de generación: 19-01-2015 a las 13:56:51
 -- Versión del servidor: 5.6.15-log
 -- Versión de PHP: 5.2.17
 
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `om_centros` (
 --
 
 CREATE TABLE IF NOT EXISTS `om_medidasusuarios` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `fecha` date NOT NULL,
   `valor` float NOT NULL,
   `id_zona` int(11) NOT NULL,
@@ -122,7 +122,58 @@ CREATE TABLE IF NOT EXISTS `om_medidasusuarios` (
   PRIMARY KEY (`id`),
   KEY `id_usuario` (`id_usuario`),
   KEY `id_zona` (`id_zona`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=46 ;
+
+--
+-- Volcado de datos para la tabla `om_medidasusuarios`
+--
+
+INSERT INTO `om_medidasusuarios` (`id`, `fecha`, `valor`, `id_zona`, `id_usuario`, `fecha_creacion`, `observaciones`) VALUES
+(1, '2014-11-21', 11, 1, 16, '2014-11-21 10:36:36', NULL),
+(2, '2014-11-21', 12, 2, 16, '2014-11-21 10:36:36', NULL),
+(3, '2014-11-21', 13, 3, 16, '2014-11-21 10:36:36', NULL),
+(4, '2014-11-21', 14, 4, 16, '2014-11-21 10:36:37', NULL),
+(5, '2014-11-21', 15, 5, 16, '2014-11-21 10:36:37', NULL),
+(6, '2014-11-21', 16, 6, 16, '2014-11-21 10:36:37', NULL),
+(7, '2014-11-21', 17, 7, 16, '2014-11-21 10:36:37', NULL),
+(8, '2014-11-21', 18, 8, 16, '2014-11-21 10:36:37', NULL),
+(9, '2014-11-21', 19, 9, 16, '2014-11-21 10:36:37', NULL),
+(10, '2014-11-21', 20, 10, 16, '2014-11-21 10:36:37', NULL),
+(11, '2014-11-21', 21, 11, 16, '2014-11-21 10:36:37', NULL),
+(12, '2014-11-21', 22, 12, 16, '2014-11-21 10:36:37', NULL),
+(13, '2014-11-21', 23, 13, 16, '2014-11-21 10:36:37', NULL),
+(14, '2014-11-21', 24, 14, 16, '2014-11-21 10:36:37', NULL),
+(15, '2014-11-21', 25, 15, 16, '2014-11-21 10:36:37', NULL),
+(16, '2014-11-24', 8, 1, 16, '2014-11-24 11:57:35', NULL),
+(17, '2014-11-24', 8, 2, 16, '2014-11-24 11:57:35', NULL),
+(18, '2014-11-24', 7, 3, 16, '2014-11-24 11:57:35', NULL),
+(19, '2014-11-24', 7, 4, 16, '2014-11-24 11:57:36', NULL),
+(20, '2014-11-24', 8, 5, 16, '2014-11-24 11:57:36', NULL),
+(21, '2014-11-24', 7, 6, 16, '2014-11-24 11:57:36', NULL),
+(22, '2014-11-24', 7, 7, 16, '2014-11-24 11:57:36', NULL),
+(23, '2014-11-24', 7, 8, 16, '2014-11-24 11:57:36', NULL),
+(24, '2014-11-24', 8, 9, 16, '2014-11-24 11:57:36', NULL),
+(25, '2014-11-24', 7, 10, 16, '2014-11-24 11:57:37', NULL),
+(26, '2014-11-24', 5, 11, 16, '2014-11-24 11:57:37', NULL),
+(27, '2014-11-24', 4, 12, 16, '2014-11-24 11:57:37', NULL),
+(28, '2014-11-24', 7, 13, 16, '2014-11-24 11:57:37', NULL),
+(29, '2014-11-24', 8, 14, 16, '2014-11-24 11:57:37', NULL),
+(30, '2014-11-24', 7, 15, 16, '2014-11-24 11:57:37', NULL),
+(31, '2014-11-24', 8, 1, 16, '2014-11-24 12:01:38', NULL),
+(32, '2014-11-24', 8, 2, 16, '2014-11-24 12:01:38', NULL),
+(33, '2014-11-24', 7, 3, 16, '2014-11-24 12:01:38', NULL),
+(34, '2014-11-24', 7, 4, 16, '2014-11-24 12:01:38', NULL),
+(35, '2014-11-24', 8, 5, 16, '2014-11-24 12:01:38', NULL),
+(36, '2014-11-24', 7, 6, 16, '2014-11-24 12:01:38', NULL),
+(37, '2014-11-24', 7, 7, 16, '2014-11-24 12:01:38', NULL),
+(38, '2014-11-24', 7, 8, 16, '2014-11-24 12:01:38', NULL),
+(39, '2014-11-24', 8, 9, 16, '2014-11-24 12:01:38', NULL),
+(40, '2014-11-24', 7, 10, 16, '2014-11-24 12:01:38', NULL),
+(41, '2014-11-24', 5, 11, 16, '2014-11-24 12:01:39', NULL),
+(42, '2014-11-24', 4, 12, 16, '2014-11-24 12:01:39', NULL),
+(43, '2014-11-24', 7, 13, 16, '2014-11-24 12:01:39', NULL),
+(44, '2014-11-24', 8, 14, 16, '2014-11-24 12:01:39', NULL),
+(45, '2014-11-24', 7, 15, 16, '2014-11-24 12:01:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -264,7 +315,7 @@ INSERT INTO `om_profiles` (`user_id`, `lastname`, `firstname`, `direccion`, `pob
 (1, 'Admin', 'Administrator', '', '', '', '', '', '', 1, 1, '', '', '', '0000-00-00', 0, ''),
 (8, 'Langa Roy', 'Hugo', 'adas', 'asaass', 'aaaa', '50897', '676555555', '', 4, 1, '', '', '', '0000-00-00', 0, ''),
 (15, 'Murillo', 'Laura', 'c/san frontonio,1', 'Épila', 'Zaragoza', '50290', '976817131', '636602253', 5, 8, NULL, '', 'Sanguínea', '1987-03-09', 0, ''),
-(16, 'Langa Roy', 'Elea', 'c/san frontonio,1', 'Épila', 'Zaragoza', '50290', '677587477', '', 5, 8, NULL, '', 'Linfática', '1980-12-17', 0, '');
+(16, 'Langa Roy', 'Elea', 'c/san frontonio,1', 'Épila', 'Zaragoza', '50290', '677587477', '', 5, 8, NULL, '', 'Linfática', '1980-12-17', 0, '<b>Crema de noche</b>. <span style="background-color: rgb(255, 204, 51);">Aplicar todos los días</span> <u>después de <span style="background-color: rgb(255, 0, 0);">cenar..</span></u>');
 
 -- --------------------------------------------------------
 
@@ -341,14 +392,34 @@ INSERT INTO `om_roles` (`id`, `nombre`, `activado`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `om_silhowell`
+--
+
+CREATE TABLE IF NOT EXISTS `om_silhowell` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `total_fit` int(11) NOT NULL,
+  `total_comfort` int(11) NOT NULL,
+  `actual_fit` int(11) NOT NULL DEFAULT '0',
+  `actual_comfort` int(11) NOT NULL DEFAULT '0',
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ultimavez` date DEFAULT NULL,
+  `texto` text COLLATE utf8_spanish_ci,
+  `id_usuario` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_usuario` (`id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `om_tests`
 --
 
 CREATE TABLE IF NOT EXISTS `om_tests` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pregunta` varchar(256) COLLATE utf8_spanish_ci NOT NULL,
-  `respuestasanguinea` varchar(256) COLLATE utf8_spanish_ci NOT NULL,
   `respuestalinfatica` varchar(256) COLLATE utf8_spanish_ci NOT NULL,
+  `respuestasanguinea` varchar(256) COLLATE utf8_spanish_ci NOT NULL,
   `respuestabiliosa` varchar(256) COLLATE utf8_spanish_ci NOT NULL,
   `respuestanerviosa` varchar(256) COLLATE utf8_spanish_ci NOT NULL,
   `observaciones` text COLLATE utf8_spanish_ci NOT NULL,
@@ -360,7 +431,7 @@ CREATE TABLE IF NOT EXISTS `om_tests` (
 -- Volcado de datos para la tabla `om_tests`
 --
 
-INSERT INTO `om_tests` (`id`, `pregunta`, `respuestasanguinea`, `respuestalinfatica`, `respuestabiliosa`, `respuestanerviosa`, `observaciones`, `activado`) VALUES
+INSERT INTO `om_tests` (`id`, `pregunta`, `respuestalinfatica`, `respuestasanguinea`, `respuestabiliosa`, `respuestanerviosa`, `observaciones`, `activado`) VALUES
 (1, 'Formas corporales', 'Corpulentas redondeadas', 'Robustas', 'Aspecto armonioso', 'Esbeltas delgadas', '', 1),
 (2, 'Musculatura', 'Escondida por espesamientos', 'Consistente, firme, redondeada', 'Aparente, bien dibujada, evidente', 'Huidiza y poco desarrollada', '', 1),
 (3, 'Color de pelo', 'Rubio claro', 'Castaño claro', 'Moreno, negro', 'Castaño', '', 1),
@@ -396,7 +467,7 @@ CREATE TABLE IF NOT EXISTS `om_tratamientos` (
   `id_usuario` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_usuario` (`id_usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `om_tratamientos`
@@ -405,7 +476,8 @@ CREATE TABLE IF NOT EXISTS `om_tratamientos` (
 INSERT INTO `om_tratamientos` (`id`, `tratamiento`, `fecha_inicio`, `fecha_fin`, `fecha_creacion`, `descripcion`, `finalizado`, `precio`, `sesiones`, `observaciones`, `id_usuario`) VALUES
 (1, 'Facial', '2014-11-20', '2014-11-20', '2014-11-20 12:01:01', '', 0, 126.3, 9, '', 15),
 (2, 'Pies', '2014-11-20', '2014-11-20', '2014-11-20 12:30:55', '', 0, NULL, NULL, '', 15),
-(3, 'Manicura', '2014-11-20', '2014-11-20', '2014-11-20 12:32:50', '', 1, 12, 1, '', 15);
+(3, 'Manicura', '2014-11-20', '2014-11-20', '2014-11-20 12:32:50', '', 1, 12, 1, '', 15),
+(4, 'Facial', '2014-11-21', '2014-11-21', '2014-11-21 10:29:46', '', 0, 35, 1, 'Acné', 16);
 
 -- --------------------------------------------------------
 
@@ -436,9 +508,9 @@ CREATE TABLE IF NOT EXISTS `om_users` (
 
 INSERT INTO `om_users` (`id`, `username`, `password`, `email`, `activkey`, `create_at`, `lastvisit_at`, `superuser`, `status`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-10-02 21:06:21', '2014-11-19 15:50:31', 1, 1),
-(8, 'hugo', 'ae4d176ebaa6d584a7450f02e8415dd3', 'hlanga@hlanga.es', '6895e3ea807e735a354e442200d92af7', '2014-10-20 10:47:04', '2014-11-20 10:07:38', 0, 1),
+(8, 'hugo', 'ae4d176ebaa6d584a7450f02e8415dd3', 'hlanga@hlanga.es', '6895e3ea807e735a354e442200d92af7', '2014-10-20 10:47:04', '2015-01-19 11:36:09', 0, 1),
 (15, 'lmurillo', 'b65a61f1f7960b00603cb4453a1590eb', 'lugardelaura@gmail.com', '2458d3d6a68dd2435344301f1c14e11c', '2014-11-13 22:08:19', '2014-11-20 09:49:51', 0, 1),
-(16, 'elealanga', '775d9c7f3672b4e2f41fe5d2aeb1c319', 'eleazgz@hotmail.com', '5cb5aedcf544ea48534d87ea971d7509', '2014-11-18 16:38:07', '2014-11-20 09:49:34', 0, 1);
+(16, 'elealanga', '775d9c7f3672b4e2f41fe5d2aeb1c319', 'eleazgz@hotmail.com', '5cb5aedcf544ea48534d87ea971d7509', '2014-11-18 16:38:07', '2014-11-27 11:47:19', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -544,6 +616,12 @@ ALTER TABLE `om_profiles`
   ADD CONSTRAINT `om_profiles_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `om_roles` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `om_profiles_ibfk_2` FOREIGN KEY (`id_padre`) REFERENCES `om_users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `om_profiles_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `om_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `om_silhowell`
+--
+ALTER TABLE `om_silhowell`
+  ADD CONSTRAINT `om_silhowell_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `om_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `om_tratamientos`
