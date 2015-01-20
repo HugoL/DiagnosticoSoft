@@ -1,28 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "{{silhowell}}".
+ * This is the model class for table "{{estadosiniciales}}".
  *
- * The followings are the available columns in table '{{silhowell}}':
+ * The followings are the available columns in table '{{estadosiniciales}}':
  * @property integer $id
- * @property integer $total_fit
- * @property integer $total_comfort
- * @property integer $actual_fit
- * @property integer $actual_comfort
+ * @property double $peso_actual
+ * @property double $peso_ideal
  * @property string $fecha
- * @property string $ultimavez
- * @property string $texto
+ * @property string $observaciones
  * @property integer $id_usuario
- *
- * The followings are the available model relations:
- * @property Users $idUsuario
  */
-class Silhowell extends CActiveRecord
+class Estadoinicial extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Silhowell the static model class
+	 * @return Estadoinicial the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -34,7 +28,7 @@ class Silhowell extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{silhowell}}';
+		return '{{estadosiniciales}}';
 	}
 
 	/**
@@ -45,12 +39,13 @@ class Silhowell extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('total_fit, total_comfort, id_usuario', 'required'),
-			array('total_fit, total_comfort, actual_fit, actual_comfort, id_usuario', 'numerical', 'integerOnly'=>true),
-			array('ultimavez, texto', 'safe'),
+			array('peso_actual, peso_ideal, id_usuario', 'required'),
+			array('id_usuario', 'numerical', 'integerOnly'=>true),
+			array('peso_actual, peso_ideal', 'numerical'),
+			array('observaciones', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, total_fit, total_comfort, actual_fit, actual_comfort, fecha, ultimavez, texto, id_usuario', 'safe', 'on'=>'search'),
+			array('id, peso_actual, peso_ideal, fecha, observaciones, id_usuario', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,7 +57,6 @@ class Silhowell extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idUsuario' => array(self::BELONGS_TO, 'Users', 'id_usuario'),
 		);
 	}
 
@@ -73,13 +67,10 @@ class Silhowell extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'total_fit' => 'Total Fit',
-			'total_comfort' => 'Total Comfort',
-			'actual_fit' => 'Sesiones consumidas Fit',
-			'actual_comfort' => 'Sesiones consumidas Comfort',
+			'peso_actual' => 'Peso Actual',
+			'peso_ideal' => 'Peso Ideal',
 			'fecha' => 'Fecha',
-			'ultimavez' => 'Última vez',
-			'texto' => 'Texto',
+			'observaciones' => 'Observaciones',
 			'id_usuario' => 'Id Usuario',
 		);
 	}
@@ -96,13 +87,10 @@ class Silhowell extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('total_fit',$this->total_fit);
-		$criteria->compare('total_comfort',$this->total_comfort);
-		$criteria->compare('actual_fit',$this->actual_fit);
-		$criteria->compare('actual_comfort',$this->actual_comfort);
+		$criteria->compare('peso_actual',$this->peso_actual);
+		$criteria->compare('peso_ideal',$this->peso_ideal);
 		$criteria->compare('fecha',$this->fecha,true);
-		$criteria->compare('ultimavez',$this->ultimavez,true);
-		$criteria->compare('texto',$this->texto,true);
+		$criteria->compare('observaciones',$this->observaciones,true);
 		$criteria->compare('id_usuario',$this->id_usuario);
 
 		return new CActiveDataProvider($this, array(

@@ -1,6 +1,6 @@
 <?php
 
-class SilhowellController extends Controller
+class EstadoinicialController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -26,9 +26,9 @@ class SilhowellController extends Controller
 	 */
 	public function accessRules()
 	{
-		return array(			
+		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','ver','calcular','index','view'),
+				'actions'=>array('index','view','create','update'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -52,56 +52,31 @@ class SilhowellController extends Controller
 		));
 	}
 
-	
-	public function actionCalcular( $peso_actual, $peso_ideal, $id_usuario ){
-		$model = new Silhowell;
-
-		///////FÓRMULA PARA CALCULAR SESIONES SILHOWELL: //////////
-				/** 
-				sobrepeso = peso - pesoIdeal 
-				y = sobrepeso / 3; (con decimales)
-				sesionesFit = y * 6;
-				sesionesComfort = y * 4;
-				*/
-		///////////////////////////////////////////////////////////
-
-		$sobrepeso = $peso_actual - $peso_ideal;
-		if( $sobrepeso > 0 ){
-			$y = $sobrepeso / 3;
-			$model->total_fit = round($y * 6);
-			$model->total_comfort = round($y * 4);
-		}else{
-			$model->total_fit = 0;
-			$model->total_comfort = 0;
-		}
-		$model->id_usuario = $id_usuario;
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
-	}
-
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate( )
+	public function actionCreate( $idUsuario )
 	{
+		$model=new Estadoinicial;
+		$model->id_usuario = $idUsuario;
 
-		$model = new Silhowell;
-		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Silhowell']))
+		if(isset($_POST['Estadoinicial']))
 		{
-			$model->attributes=$_POST['Silhowell'];
+			$model->attributes=$_POST['Estadoinicial'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('silhowell/calcular', 'peso_actual' => $model->peso_actual, 'peso_ideal'=>$model->peso_ideal, 'id_usuario'=>$idUsuario));
 		}
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'user_id = :user_id';
+		$criteria->params = array(':user_id' => $idUsuario);
+		$profile = Profile::model()->find( $criteria );
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model, 'profile'=>$profile
 		));
 	}
 
@@ -117,9 +92,9 @@ class SilhowellController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Silhowell']))
+		if(isset($_POST['Estadoinicial']))
 		{
-			$model->attributes=$_POST['Silhowell'];
+			$model->attributes=$_POST['Estadoinicial'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -148,34 +123,10 @@ class SilhowellController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Silhowell');
+		$dataProvider=new CActiveDataProvider('Estadoinicial');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
-	}
-
-	public function actionVer( $id )
-	{
-		//$model=$this->loadModel($id);
-		$model = new Silhowell;
-
-		$criteria  = new CDbCriteria;
-		$criteria->condition = 'id_usuario = :id_usuario';
-		$criteria->params = array(':id_usuario' => $id);
-		$silhowell = Silhowell::model()->find($criteria);
-
-		if( !empty($silhowell) ){
-			$this->render('user/silhowell', array('silhowell'=>$silhowell));
-		}else{
-			$criteria  = new CDbCriteria;
-			$criteria->condition = 'user_id = :id_usuario';
-			$criteria->params = array(':id_usuario' => $id);
-			$profile = Profile::model()->find($criteria);
-			$model->id_usuario = $profile->user_id;
-
-			$this->redirect(array('estadoinicial/create', 'idUsuario'=>$profile->user_id));
-		}
-
 	}
 
 	/**
@@ -183,10 +134,10 @@ class SilhowellController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Silhowell('search');
+		$model=new Estadoinicial('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Silhowell']))
-			$model->attributes=$_GET['Silhowell'];
+		if(isset($_GET['Estadoinicial']))
+			$model->attributes=$_GET['Estadoinicial'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -197,12 +148,12 @@ class SilhowellController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Silhowell the loaded model
+	 * @return Estadoinicial the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Silhowell::model()->findByPk($id);
+		$model=Estadoinicial::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -210,11 +161,11 @@ class SilhowellController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Silhowell $model the model to be validated
+	 * @param Estadoinicial $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='silhowell-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='estadoinicial-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

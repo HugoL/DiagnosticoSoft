@@ -15,6 +15,4 @@ $this->menu=array(
 
 <h1>Comenzar Silhowell</h1>
 
-<h3><?php echo CHtml::encode($profile->firstname); ?></h3>
-
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

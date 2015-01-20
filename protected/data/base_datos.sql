@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-01-2015 a las 13:56:51
+-- Tiempo de generación: 20-01-2015 a las 14:08:34
 -- Versión del servidor: 5.6.15-log
 -- Versión de PHP: 5.2.17
 
@@ -101,6 +101,23 @@ CREATE TABLE IF NOT EXISTS `om_centros` (
   `poblacion` varchar(128) COLLATE utf8_spanish_ci DEFAULT NULL,
   `codigopostal` varchar(128) COLLATE utf8_spanish_ci DEFAULT NULL,
   `id_usuario` int(11) DEFAULT NULL COMMENT 'Propietario del centro',
+  PRIMARY KEY (`id`),
+  KEY `id_usuario` (`id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `om_estadosiniciales`
+--
+
+CREATE TABLE IF NOT EXISTS `om_estadosiniciales` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `peso_actual` float NOT NULL,
+  `peso_ideal` float NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `observaciones` text COLLATE utf8_spanish_ci,
+  `id_usuario` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_usuario` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
@@ -508,7 +525,7 @@ CREATE TABLE IF NOT EXISTS `om_users` (
 
 INSERT INTO `om_users` (`id`, `username`, `password`, `email`, `activkey`, `create_at`, `lastvisit_at`, `superuser`, `status`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'webmaster@example.com', '9a24eff8c15a6a141ece27eb6947da0f', '2014-10-02 21:06:21', '2014-11-19 15:50:31', 1, 1),
-(8, 'hugo', 'ae4d176ebaa6d584a7450f02e8415dd3', 'hlanga@hlanga.es', '6895e3ea807e735a354e442200d92af7', '2014-10-20 10:47:04', '2015-01-19 11:36:09', 0, 1),
+(8, 'hugo', 'ae4d176ebaa6d584a7450f02e8415dd3', 'hlanga@hlanga.es', '6895e3ea807e735a354e442200d92af7', '2014-10-20 10:47:04', '2015-01-20 11:30:15', 0, 1),
 (15, 'lmurillo', 'b65a61f1f7960b00603cb4453a1590eb', 'lugardelaura@gmail.com', '2458d3d6a68dd2435344301f1c14e11c', '2014-11-13 22:08:19', '2014-11-20 09:49:51', 0, 1),
 (16, 'elealanga', '775d9c7f3672b4e2f41fe5d2aeb1c319', 'eleazgz@hotmail.com', '5cb5aedcf544ea48534d87ea971d7509', '2014-11-18 16:38:07', '2014-11-27 11:47:19', 0, 1);
 
@@ -589,6 +606,12 @@ ALTER TABLE `authitemchild`
 --
 ALTER TABLE `om_centros`
   ADD CONSTRAINT `om_centros_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `om_users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `om_estadosiniciales`
+--
+ALTER TABLE `om_estadosiniciales`
+  ADD CONSTRAINT `om_estadosiniciales_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `om_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `om_medidasusuarios`

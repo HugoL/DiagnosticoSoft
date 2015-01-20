@@ -11,7 +11,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Los campos con  <span class="required">*</span> son obligatorios.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -37,12 +37,6 @@
 		<?php echo $form->labelEx($model,'actual_comfort'); ?>
 		<?php echo $form->textField($model,'actual_comfort'); ?>
 		<?php echo $form->error($model,'actual_comfort'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'fecha'); ?>
-		<?php echo $form->textField($model,'fecha'); ?>
-		<?php echo $form->error($model,'fecha'); ?>
 	</div>
 
 	<div class="row">
