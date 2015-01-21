@@ -57,12 +57,12 @@ class SilhowellController extends Controller
 		$model = new Silhowell;
 
 		///////FÓRMULA PARA CALCULAR SESIONES SILHOWELL: //////////
-				/** 
-				sobrepeso = peso - pesoIdeal 
-				y = sobrepeso / 3; (con decimales)
-				sesionesFit = y * 6;
-				sesionesComfort = y * 4;
-				*/
+		/** 
+		sobrepeso = peso - pesoIdeal 
+		y = sobrepeso / 3; (con decimales)
+		sesionesFit = y * 6;
+		sesionesComfort = y * 4;
+		*/
 		///////////////////////////////////////////////////////////
 
 		$sobrepeso = $peso_actual - $peso_ideal;
@@ -85,19 +85,33 @@ class SilhowellController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate( )
+	public function actionCreate( $peso_actual = 0, $peso_ideal = 0, $id_usuario )
 	{
 
 		$model = new Silhowell;
-		
+		$model->id_usuario = $id_usuario;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Silhowell']))
 		{
 			$model->attributes=$_POST['Silhowell'];
+			if( strcmp($model->ultimavez,'') == 0 )
+				$model->ultimavez = NULL;
+			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
+		}else{
+			$sobrepeso = $peso_actual - $peso_ideal;
+			if( $sobrepeso > 0 ){
+				$y = $sobrepeso / 3;
+				$model->total_fit = round($y * 6);
+				$model->total_comfort = round($y * 4);
+			}else{
+				$model->total_fit = 0;
+				$model->total_comfort = 0;
+			}
+			
 		}
 
 		$this->render('create',array(
@@ -162,10 +176,15 @@ class SilhowellController extends Controller
 		$criteria  = new CDbCriteria;
 		$criteria->condition = 'id_usuario = :id_usuario';
 		$criteria->params = array(':id_usuario' => $id);
-		$silhowell = Silhowell::model()->find($criteria);
+		$silhowells = Silhowell::model()->findAll($criteria);
 
-		if( !empty($silhowell) ){
-			$this->render('user/silhowell', array('silhowell'=>$silhowell));
+		$criteria  = new CDbCriteria;
+		$criteria->condition = 'user_id = :id_usuario';
+		$criteria->params = array(':id_usuario' => $id);
+		$profile = Profile::model()->find($criteria);
+
+		if( !empty($silhowells) ){
+			$this->render('index', array('silhowells'=>$silhowells,'profile'=>$profile));
 		}else{
 			$criteria  = new CDbCriteria;
 			$criteria->condition = 'user_id = :id_usuario';

@@ -12,7 +12,7 @@
 
     			<div class="row-fluid">
     				<div class="ficha">
-					<?php $this->renderPartial('_menuficha',array('model' => $user)); ?>
+					<?php  $this->widget('UserMenu',array('id_usuario'=>$user->user_id)); ?>
 					<div class="contenido">
 						<?php if(Yii::app()->user->hasFlash('success')):?>
 		    				<div class="alert alert-success">

@@ -74,10 +74,10 @@ h1,h2,h3,h4, .portlet > .portlet-decoration, .sidebar-nav > ul > li > a, .navbar
 /* Start Portlets*/
 .portlet{
 -webkit-box-shadow:#F9F9F9 0 1px 0 inset;
-  border:1px solid #DDDDDD;
+ /* border:1px solid #DDDDDD;*/
   border-radius:3px;
   box-shadow:#F9F9F9 0 1px 0 inset;
-  margin-bottom:20px;
+  margin-bottom: 2px;
   min-height:40px;
 
 }
@@ -633,6 +633,7 @@ div.product-chooser{
     .nav-tabs > li > a{
       font-size: 20px;
       color:#A8A8A8;
+      border: 1px solid rgba(147, 147, 147, 0.44) !important;
     }
     .ficha{
       background-color: #fff;
@@ -790,4 +791,3 @@ div.product-chooser{
 .rememberme input{
   width: auto !important;
 }
-

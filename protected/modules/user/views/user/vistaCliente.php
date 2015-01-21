@@ -11,7 +11,7 @@
     			<h1>Ficha de <?php echo $user->profile->firstname." ".$user->profile->lastname; ?></h1>
     			<div class="row-fluid">
     				<div class="ficha">
-					<?php $this->renderPartial('_menuficha',array('model' => $user->profile)); ?>
+					<?php  $this->widget('UserMenu',array('id_usuario'=>$user->profile->user_id)); ?>
 					<div class="contenido">
 						<div class="row-fluid">
 							<div class="well well-small span3">Tipo de usuario: <strong><?php echo $rol->nombre; ?></strong></div>

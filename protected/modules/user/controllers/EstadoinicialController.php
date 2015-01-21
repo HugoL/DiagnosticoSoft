@@ -68,7 +68,7 @@ class EstadoinicialController extends Controller
 		{
 			$model->attributes=$_POST['Estadoinicial'];
 			if($model->save())
-				$this->redirect(array('silhowell/calcular', 'peso_actual' => $model->peso_actual, 'peso_ideal'=>$model->peso_ideal, 'id_usuario'=>$idUsuario));
+				$this->redirect(array('silhowell/create', 'peso_actual' => $model->peso_actual, 'peso_ideal'=>$model->peso_ideal, 'id_usuario'=>$idUsuario));
 		}
 		$criteria = new CDbCriteria;
 		$criteria->condition = 'user_id = :user_id';
