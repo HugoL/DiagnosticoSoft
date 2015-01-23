@@ -12,7 +12,13 @@ $this->menu=array(
 	array('label'=>'Manage Estadoinicial', 'url'=>array('admin')),
 );
 ?>
+<div class="row-fluid ficha">
+	<div class="ficha">
+		<?php  $this->widget('UserMenu',array('id_usuario'=>$model->id_usuario)); ?>
+		<div class="contenido">
+			<h1>Calcular el número de sesiones</h1>
 
-<h1>Calcular el número de sesiones</h1>
-
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+			<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+		</div>
+	</div>
+</div>

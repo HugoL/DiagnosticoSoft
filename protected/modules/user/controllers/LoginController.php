@@ -21,7 +21,10 @@ class LoginController extends Controller
 					//Miro qué rol de usuario para redirigirle a la página correcta	
 					$user = User::model()->findByPk(Yii::app()->user->id);	
 					$rol = Rol::model()->findByPk( $user->profile->rol );
-					$this->redirect( Yii::app()->baseUrl.'/user/profile/redireccionar/rol/'.$rol->nombre );
+					if( strcmp($rol->nombre,"trabajador") == 0 )
+						$this->redirect(array('user/listarhijos'));
+
+					$this->redirect( array('profile/redireccionar','rol'=>$rol->nombre));
 					/*if (Yii::app()->user->returnUrl=='/index.php')
 						$this->redirect(Yii::app()->controller->module->returnUrl);
 					else
@@ -30,8 +33,14 @@ class LoginController extends Controller
 			}
 			// display the login form
 			$this->render('/user/login',array('model'=>$model));
-		} else
-			$this->redirect(Yii::app()->controller->module->returnUrl);
+		} else{
+			$user = User::model()->findByPk(Yii::app()->user->id);	
+			$rol = Rol::model()->findByPk( $user->profile->rol );
+			if( strcmp($rol->nombre,"trabajador") == 0 )
+				$this->redirect(array('user/listarhijos'));
+						
+			$this->redirect( Yii::app()->baseUrl.'/user/profile/redireccionar/rol/'.$rol->nombre );
+		}
 	}
 	
 	private function lastViset() {

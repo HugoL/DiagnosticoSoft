@@ -36,7 +36,7 @@
 				</div>
 
 				<div class="span1">
-					<?php echo CHtml::submitButton('Guardar',array('class'=> 'btn btn-warning btn-large')); ?>
+					<?php echo CHtml::submitButton('Guardar',array('class'=> 'btn btn-info btn-large')); ?>
 				</div>
 				<div class="clearfix">&nbsp;</div>
 			</div>

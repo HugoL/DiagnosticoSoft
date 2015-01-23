@@ -24,7 +24,8 @@
 				$this->renderPartial('_view',array('data'=>$silhowell));
 			}
 			?>
-			<?php echo CHtml::link('Añadir nuevo',array('estadoinicial/create', 'idUsuario'=>$profile->user_id),array('class'=>'btn btn-warning btn-large')); ?>
+			<div class="clearfix">&nbsp;</div>
+			<?php echo CHtml::link('Nuevo Silhowell',array('estadoinicial/create', 'idUsuario'=>$profile->user_id),array('class'=>'btn btn-info')); ?>
 		</div>
 	</div>
 </div>

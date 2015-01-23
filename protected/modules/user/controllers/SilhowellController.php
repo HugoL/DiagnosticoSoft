@@ -28,7 +28,7 @@ class SilhowellController extends Controller
 	{
 		return array(			
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','ver','calcular','index','view'),
+				'actions'=>array('create','update','ver','calcular','index','view','consumirFit','consumirComfort'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -100,7 +100,7 @@ class SilhowellController extends Controller
 				$model->ultimavez = NULL;
 			
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('ver','id'=>$model->id_usuario));
 		}else{
 			$sobrepeso = $peso_actual - $peso_ideal;
 			if( $sobrepeso > 0 ){
@@ -119,6 +119,22 @@ class SilhowellController extends Controller
 		));
 	}
 
+	public function actionConsumirFit( $id ){
+		$silhowell = Silhowell::model()->findByPk( $id );
+		$silhowell->saveCounters(array('actual_fit'=>1));
+
+		$this->redirect(array('ver','id'=>$silhowell->id_usuario));
+	}
+
+	public function actionConsumirComfort( $id ){
+
+		$silhowell = Silhowell::model()->findByPk( $id );
+		$silhowell->saveCounters(array('actual_comfort'=>1));
+
+		$this->redirect(array('ver','id'=>$silhowell->id_usuario));
+		
+	}
+
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -134,8 +150,11 @@ class SilhowellController extends Controller
 		if(isset($_POST['Silhowell']))
 		{
 			$model->attributes=$_POST['Silhowell'];
+			if( strcmp($model->ultimavez,'') == 0 )
+				$model->ultimavez = NULL;
+
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('ver','id'=>$model->id_usuario));
 		}
 
 		$this->render('update',array(

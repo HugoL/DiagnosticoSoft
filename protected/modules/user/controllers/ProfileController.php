@@ -143,12 +143,11 @@ class ProfileController extends Controller
 					$this->render( 'secretario', array('model'=>$model, 'rol'=>$rolModel) );
 					break;
 				case 'trabajador':
-					$this->render('trabajador', array('model'=>$model, 'rol'=>$rolModel));
+					$this->render('trabajador', array('model'=>$model, 'rol'=>$rolModel));					
 					break;
 				case 'cliente':
 					$this->render('cliente', array('model'=>$model, 'rol'=>$rolModel));
-					break;
-				
+					break;				
 				default:
 					$this->redirect(Yii::app()->controller->module->returnUrl);
 					break;
