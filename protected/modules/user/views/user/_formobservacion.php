@@ -105,19 +105,20 @@
 		<?php echo $form->textArea($model,'menstruaciones',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'menstruaciones'); ?>
 		</div>
-		<div class="span2">
+		<div class="span5">
 		<?php echo $form->labelEx($model,'embarazos'); ?>
-		<?php echo $form->textField($model,'embarazos'); ?>
+		<?php echo $form->dropDownList($model, 'embarazos', 
+              array('0' => 'No', '1' => 'Sí'));; ?>
 		<?php echo $form->error($model,'embarazos'); ?>
-		</div>
-		<div class="span2">
+		
 		<?php echo $form->labelEx($model,'partos'); ?>
-		<?php echo $form->textField($model,'partos'); ?>
+		<?php echo $form->dropDownList($model, 'partos', 
+              array('0' => 'No', '1' => 'Sí'));; ?>
 		<?php echo $form->error($model,'partos'); ?>
-		</div>
-		<div class="span2">
+		
 		<?php echo $form->labelEx($model,'abortos'); ?>
-		<?php echo $form->textField($model,'abortos'); ?>
+		<?php echo $form->dropDownList($model,'abortos', 
+              array('0' => 'No', '1' => 'Sí'));; ?>
 		<?php echo $form->error($model,'abortos'); ?>
 		</div>
 		<div class="span3">
@@ -169,17 +170,17 @@
 		<?php echo $form->textArea($model,'dolor',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'dolor'); ?>
 		</div>
-		<div class="span3">
+		<div class="span1">
 		<?php echo $form->labelEx($model,'calambres'); ?>
 		<?php echo $form->textField($model,'calambres'); ?>
 		<?php echo $form->error($model,'calambres'); ?>
 		</div>
-		<div class="span3">
+		<div class="span1">
 		<?php echo $form->labelEx($model,'piesFrios'); ?>
 		<?php echo $form->textField($model,'piesFrios'); ?>
 		<?php echo $form->error($model,'piesFrios'); ?>
 		</div>
-		<div class="span3">
+		<div class="span1">
 		<?php echo $form->labelEx($model,'manosFrias'); ?>
 		<?php echo $form->textField($model,'manosFrias'); ?>
 		<?php echo $form->error($model,'manosFrias'); ?>

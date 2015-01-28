@@ -57,10 +57,10 @@ class Observacion extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_usuario', 'required'),
-			array('tensionMax, tensionMin, embarazos, partos, abortos, calambres, piesFrios, manosFrias, id_usuario', 'numerical', 'integerOnly'=>true),
+			array('tensionMax, tensionMin, embarazos, partos, abortos, id_usuario', 'numerical', 'integerOnly'=>true),
 			array('pesoMax, pesoMin, pesoIdeal, tallaActual, tallaDeseada', 'numerical'),
 			array('motivo, digestiones', 'length', 'max'=>128),
-			array('tratamientosAnteriores, variacionesPeso, enfermedades, alergias, terapias, menstruaciones, metodoAnticonceptivo, diuresis, suenyo, ritmoIntestinal, actividadFisica, pesadezPiernas, dolor', 'safe'),
+			array('tratamientosAnteriores, variacionesPeso, enfermedades, alergias, terapias, menstruaciones, metodoAnticonceptivo, diuresis, suenyo, ritmoIntestinal, actividadFisica, pesadezPiernas, dolor, calambres, piesFrios, manosFrias,', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, motivo, tratamientosAnteriores, variacionesPeso, pesoMax, pesoMin, pesoIdeal, tallaActual, tallaDeseada, tensionMax, tensionMin, enfermedades, alergias, terapias, menstruaciones, embarazos, partos, abortos, metodoAnticonceptivo, diuresis, suenyo, ritmoIntestinal, actividadFisica, digestiones, pesadezPiernas, dolor, calambres, piesFrios, manosFrias, id_usuario', 'safe', 'on'=>'search'),
