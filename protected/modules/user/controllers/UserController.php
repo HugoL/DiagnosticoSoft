@@ -249,11 +249,19 @@ class UserController extends Controller
 		    $criteria2->params = array(':id_usuario' => $id);
 		    $totalmedidas = Medidasusuario::model()->findAll( $criteria2 );
 
+		    //cojo las medidas del usuario para mostrarlas
+		    $criteria3 = new CDbCriteria;
+			$criteria3->select = 'valor, fecha, id_zona';
+		    $criteria3->condition = 'id_usuario=:id_usuario';
+		    $criteria3->params = array(':id_usuario' => $id);
+		    $medidascliente = Medidasusuario::model()->findAll( $criteria3 );
+
 			$this->render('medidas',array(
 				'user'=>$user,
 				'zonas'=>$zonas,
 				'medidas'=>$medidas,
 				'totalmedidas'=>$totalmedidas,
+				'medidascliente'=>$medidascliente,
 			));
 		}else{
 			$this->redirect(array("site/nopermitido"));

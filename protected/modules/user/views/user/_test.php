@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<?php if( !empty($user->morfologia)): ?>
-		<h5><p>Morfología del cliente: <span class="label label-warning"><?php echo $user->morfologia; ?></span></p></h5>
+		<div class="well"><center><h3><p>Morfología del cliente: <span class="text-warning"><?php echo $user->morfologia; ?></span></p></h3></center></div>
 	<?php else: ?>
 		<div class="alert alert-info">No se ha definido una morfolgía para este cliente</div>
 	<?php endif; ?>

@@ -1,3 +1,5 @@
+<?php $interruptor = false; $mifecha = 0; ?>
+
 <div class="row-fluid">
 	<div class="span12"><center><?php $this->widget('bootstrap.widgets.TbButton', array(
 		'label'=>'Listado de clientes',
@@ -39,13 +41,48 @@
 						  $datos1[] = array('Fecha', 'Total medidas');
 					?>
     				<div class="row-fluid">
-    					<?php foreach ($totalmedidas as $key => $medida): ?>
-    						<?php 
+    					<?php if( !empty($medidascliente) ): ?>
+    						<center><h3>Medidas del cliente:</h3></center>
+	    					<table class="table table-bordered table-striped">
+	    						<tr>
+	    							<th>Zona</th>
+	    							<th>Medida</th>
+	    							<th>Fecha</th>
+	    						</tr>
+	    					<?php foreach ($medidascliente as $key => $medida): ?>
+	    						<?php $fechaactual = $medida->fecha; ?>	    						
+								<?php if( $mifecha != $fechaactual): ?>
+									<?php if( $interruptor ): ?>
+										</table>										
+										<table class="table table-bordered table-striped">
+			    						<tr>
+			    							<th>Zona</th>
+			    							<th>Medida</th>
+			    							<th>Fecha</th>
+			    						</tr>
+									<?php endif; ?>
+									<?php $interruptor = true; ?>
+								<?php endif; ?>
+
+								<tr>
+	    							<td><?php echo CHtml::encode($medida->idZona->nombre ); ?></td>
+	    							<td><?php echo CHtml::encode($medida->valor ); echo $medida->idZona->tipo == 0 ? " cm." : " mm." ?></td>
+	    							<td><?php echo date('d-m-Y',strtotime($medida->fecha) );; ?></td> 						
+								</tr>								
+								<?php $mifecha = $medida->fecha; ?>
+	    					<?php endforeach; ?>
+	    					</table>
+	    					<div class="clearfix">&nbsp;</div>
+    					<?php endif; ?>
+
+    					<?php foreach ($totalmedidas as $key => $medida): 
+    						
 								$fecha = date('d-m-Y',strtotime($medida->fecha));
 								$datos1[] = array($fecha, floatval($medida->total)); 
 							?>
+
     					<?php endforeach; ?>
-    			
+    					
 						<div class="grafica"><?php
 							 $this->widget('ext.Hzl.google.HzlVisualizationChart', array('visualization' => 'LineChart',
 					            'data' =>   $datos1,
