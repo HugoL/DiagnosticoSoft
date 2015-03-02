@@ -81,6 +81,7 @@ class UserController extends Controller
 			$criteria->order = 'lastname';
 		}else{
 			$criteria = new CDbCriteria;
+			$criteria->condition = "rol <> 1 AND rol<>2";
 		}
 		if( !empty($pag) ){
 			//calcular el offset y el limit correspondientes a la página
@@ -89,8 +90,8 @@ class UserController extends Controller
 		$hijos = Profile::model()->findAll( $criteria );	
 		$roles = Rol::model()->findAll();	
 
-    	$count=Profile::model()->count($criteria);
-    	$pages=new CPagination($count);
+    	$count = Profile::model()->count($criteria);
+    	$pages = new CPagination($count);
 
     	// results per page
     	$pages->pageSize=20;

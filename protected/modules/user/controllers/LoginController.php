@@ -21,7 +21,7 @@ class LoginController extends Controller
 					//Miro qué rol de usuario para redirigirle a la página correcta	
 					$user = User::model()->findByPk(Yii::app()->user->id);	
 					$rol = Rol::model()->findByPk( $user->profile->rol );
-					if( strcmp($rol->nombre,"trabajador") == 0 )
+					if( strcmp($rol->nombre,"trabajador") == 0 || strcmp($rol->nombre,"administrador") == 0 )
 						$this->redirect(array('user/listarhijos'));
 
 					$this->redirect( array('profile/redireccionar','rol'=>$rol->nombre));

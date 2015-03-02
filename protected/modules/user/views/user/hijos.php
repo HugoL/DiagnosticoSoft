@@ -41,6 +41,14 @@
 )) ?>
 <?php else: ?>
 	<div class="alert alert-info">Todavía no tienes usuarios a tu cargo</div>
+	<div class="row-fluid"><center><?php $this->widget('bootstrap.widgets.TbButton', array(
+		'label'=>'Nuevo Cliente',
+    				'type'=>'info', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+    				'size'=>'large', // null, 'large', 'small' or 'mini'
+    				'icon'=>'user white',
+    				'url'=>array('admin/create'),
+    				'toggle'=>false,
+    				)); ?></center><br/></div>
 <?php endif;?>
 </div>
 </div>

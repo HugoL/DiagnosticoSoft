@@ -39,7 +39,7 @@
 		<?php echo $form->labelEx($model,'status'); ?>
 		<?php echo $form->dropDownList($model,'status',User::itemAlias('UserStatus')); ?>
 		<?php echo $form->error($model,'status'); ?>
-		<br/><small>Activo: el cliente puede acceder a la plataforma. Inactivo: el cliente NO puede acceder a la plataforma</small>
+		<br/><small>Activo: el cliente puede acceder a SiluSoft. Inactivo: el cliente NO puede acceder a SiluSoft</small>
 	</div>
 	<?php 
 		$profileFields=$profile->getFields();
