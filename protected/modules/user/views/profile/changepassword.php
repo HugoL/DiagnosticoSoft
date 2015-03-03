@@ -29,13 +29,13 @@ $this->menu=array(
 	<?php echo $form->errorSummary($model); ?>
 	
 	<div class="row">
-	<?php echo $form->labelEx($model,'oldPassword'); ?>
+	<?php echo $form->labelEx($model,'Contrase&ntilde;a actual'); ?>
 	<?php echo $form->passwordField($model,'oldPassword'); ?>
 	<?php echo $form->error($model,'oldPassword'); ?>
 	</div>
 	
 	<div class="row">
-	<?php echo $form->labelEx($model,'password'); ?>
+	<?php echo $form->labelEx($model,'Nueva Contrase&ntilde;a'); ?>
 	<?php echo $form->passwordField($model,'password'); ?>
 	<?php echo $form->error($model,'password'); ?>
 	<p class="hint">
@@ -44,7 +44,7 @@ $this->menu=array(
 	</div>
 	
 	<div class="row">
-	<?php echo $form->labelEx($model,'verifyPassword'); ?>
+	<?php echo $form->labelEx($model,'Repetir nueva contrase&ntilde;a'); ?>
 	<?php echo $form->passwordField($model,'verifyPassword'); ?>
 	<?php echo $form->error($model,'verifyPassword'); ?>
 	</div>

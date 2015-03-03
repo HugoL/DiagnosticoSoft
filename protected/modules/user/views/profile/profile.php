@@ -18,6 +18,7 @@ $this->menu=array(
 	<?php echo Yii::app()->user->getFlash('profileMessage'); ?>
 </div>
 <?php endif; ?>
+<div class="clearfix"><?php echo CHtml::link('Modificar Datos',array('edit'),array('class' => 'btn btn-info btn-large')); ?></div>
 <table class="table">
 	<tr>
 		<th class="label span2"><?php echo CHtml::encode($model->getAttributeLabel('username')); ?></th>

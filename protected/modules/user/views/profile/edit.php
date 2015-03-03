@@ -13,7 +13,7 @@ $this->menu=array(
     array('label'=>UserModule::t('Logout'), 'url'=>array('/user/logout')),
 );
 ?><h1><?php echo UserModule::t('Edit profile'); ?></h1>
-
+<div class="clearfix"><?php echo CHtml::link('Cambiar contraseña',array('changepassword'),array('class' => 'btn btn-info btn-large')); ?></div>
 <?php if(Yii::app()->user->hasFlash('profileMessage')): ?>
 <div class="success">
 <?php echo Yii::app()->user->getFlash('profileMessage'); ?>
