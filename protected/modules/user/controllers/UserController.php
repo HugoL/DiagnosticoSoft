@@ -108,7 +108,7 @@ class UserController extends Controller
 			$user = User::model()->findbyPk( $id );
 			$profile = $user->profile;
 
-			if( $profile->user_id == Yii::app()->user->id || $this->esDescendiente( $profile ) ){
+			if( $profile->user_id == Yii::app()->user->id || $this->esDescendiente( $profile ) || Yii::app()->getModule('user')->esAlgunAdmin() ){
 				//calculo la edad
 				if( !empty($user->profile->fechanacimiento) && strcmp($user->profile->fechanacimiento,'0000-00-00') != 0 ){
 					//explode the date to get month, day and year
