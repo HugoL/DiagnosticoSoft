@@ -121,7 +121,12 @@ class UserController extends Controller
 				}
 				$rol = Rol::model()->findbyPk($user->profile->rol);
 				
-				$this->render('verUsuario', array('user'=>$user, 'model' => $profile, 'rol'=>$rol,'edad'=>$edad));
+				if( !Yii::app()->getModule('user')->esAlgunAdmin() ){
+					$this->render('verUsuarioCliente', array('user'=>$user, 'model' => $profile, 'rol'=>$rol,'edad'=>$edad));
+				}else{
+					$this->render('verUsuario', array('user'=>$user, 'model' => $profile, 'rol'=>$rol,'edad'=>$edad));
+				}
+			
 			}else{
 				$this->redirect(CHttpRequest::getUrlReferrer());
 			}
@@ -206,7 +211,7 @@ class UserController extends Controller
 		$user = Profile::model()->find($criteria);
 		
 
-		if( Yii::app()->getModule('user')->esAlgunAdmin() || $this->esDescendiente($user) ){
+		if( Yii::app()->getModule('user')->esAlgunAdmin() || $user->user_id == Yii::app()->user->id || $this->esDescendiente($user) ){
 			$zonas = Zona::model()->findAll();
 			$medidas = new Medidasusuario;			
 			if (isset($_POST['Medidasusuario'])) {
@@ -257,13 +262,23 @@ class UserController extends Controller
 		    $criteria3->params = array(':id_usuario' => $id);
 		    $medidascliente = Medidasusuario::model()->findAll( $criteria3 );
 
-			$this->render('medidas',array(
-				'user'=>$user,
-				'zonas'=>$zonas,
-				'medidas'=>$medidas,
-				'totalmedidas'=>$totalmedidas,
-				'medidascliente'=>$medidascliente,
-			));
+		    if( !Yii::app()->getModule('user')->esAlgunAdmin() && !$this->esDescendiente($user) ){
+		    	$this->render('medidas_cliente',array(
+					'user'=>$user,
+					'zonas'=>$zonas,
+					'medidas'=>$medidas,
+					'totalmedidas'=>$totalmedidas,
+					'medidascliente'=>$medidascliente,
+				));
+		    }
+		  	else
+				$this->render('medidas',array(
+					'user'=>$user,
+					'zonas'=>$zonas,
+					'medidas'=>$medidas,
+					'totalmedidas'=>$totalmedidas,
+					'medidascliente'=>$medidascliente,
+				));
 		}else{
 			$this->redirect(array("site/nopermitido"));
 		}
@@ -279,7 +294,7 @@ class UserController extends Controller
 		
 		//tiene que ser hijo para poder crear una observacion
 		$interruptor = false;
-		if( Yii::app()->getModule('user')->esAlgunAdmin() || $this->esDescendiente($user) ){
+		if( Yii::app()->getModule('user')->esAlgunAdmin() || $user->user_id == Yii::app()->user->id || $this->esDescendiente($user) ){
 
 			$peso = new Peso;
 			$criteria2 = new CDbCriteria;
@@ -306,11 +321,20 @@ class UserController extends Controller
 
 			}
 			$pesos = Peso::model()->findAll( $criteria2 );
-			$this->render('peso',array(
-				'user'=>$user,
-				'peso'=>$peso,
-				'pesos'=>$pesos,
-			));
+
+			 if( !Yii::app()->getModule('user')->esAlgunAdmin() && !$this->esDescendiente($user) ){
+			 	$this->render('peso_cliente',array(
+					'user'=>$user,
+					'peso'=>$peso,
+					'pesos'=>$pesos,
+				));	
+			 }else{
+				$this->render('peso',array(
+					'user'=>$user,
+					'peso'=>$peso,
+					'pesos'=>$pesos,
+				));	
+			}
 		}else{
 			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');
 		}
@@ -325,7 +349,7 @@ class UserController extends Controller
 		$user = Profile::model()->find($criteria);
 		
 		//tiene que ser hijo para poder crear un tratamiento
-		if( Yii::app()->getModule('user')->esAlgunAdmin() || $this->esDescendiente( $user ) ){
+		if( Yii::app()->getModule('user')->esAlgunAdmin() || $user->user_id == Yii::app()->user->id || $this->esDescendiente( $user ) ){
 			$tratamiento = new Tratamiento;
 			$criteria2 = new CDbCriteria;
 			$criteria2->condition = 'id_usuario = :id_usuario';
@@ -356,11 +380,20 @@ class UserController extends Controller
 
 			}
 			$tratamientos = Tratamiento::model()->findAll( $criteria2 );
-			$this->render('tratamiento',array(
-				'model'=>$user,
-				'tratamiento'=>$tratamiento,
-				'tratamientos'=>$tratamientos,
-			));
+
+			if( !Yii::app()->getModule('user')->esAlgunAdmin() && !$this->esDescendiente($user) ){
+				$this->render('tratamiento_cliente',array(
+					'model'=>$user,
+					'tratamiento'=>$tratamiento,
+					'tratamientos'=>$tratamientos,
+				));
+			}else{
+				$this->render('tratamiento',array(
+					'model'=>$user,
+					'tratamiento'=>$tratamiento,
+					'tratamientos'=>$tratamientos,
+				));
+			}
 		}else{
 			$this->redirect(Yii::app()->request->baseUrl.'/site/page/nopermitido');
 		}

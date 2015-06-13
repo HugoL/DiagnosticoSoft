@@ -3,7 +3,7 @@
     			<h1>Ficha de <?php echo $user->firstname." ".$user->lastname; ?></h1>
     			<div class="row-fluid">
     				<div class="ficha">
-					<?php $this->renderPartial('_menufichacliente',array('model' => $user)); ?>
+					<?php  $this->widget('ClienteMenu'); ?>
 					<div class="contenido">
 						<div><?php if( !empty($user->recomendaciones)): ?></div>
 								<?php echo $user->recomendaciones; ?>
