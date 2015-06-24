@@ -184,12 +184,12 @@
                                     <td>
                                        <div class="control-group">
                                         <div class="controls">
-                                          <label class="radio inline" for="radios-0">
-                                            <input name="radios" id="radios-0" value="1"  type="radio">
+                                          <label class="radio inline" for="radiosssss-0">
+                                            <input name="radios1" id="radios-0" value="1"  type="radio">
                                             Sí
                                         </label>
-                                        <label class="radio inline" for="radios-1">
-                                            <input name="radios" id="radios-1" value="2" type="radio">
+                                        <label class="radio inline" for="radiosssss-1">
+                                            <input name="radios1" id="radios-1" value="2" type="radio">
                                             NO
                                         </label>    
                                     </div>
@@ -203,12 +203,12 @@
                             <td>
                                 <div class="control-group">
                                   <div class="controls">
-                                    <label class="radio inline" for="radios-0">
-                                      <input name="radios" id="radios-2" value="1"  type="radio">
+                                    <label class="radio inline" for="radiosssss-0">
+                                      <input name="radios2" id="radios-2" value="1"  type="radio">
                                       Sí
                                   </label>
-                                  <label class="radio inline" for="radios-1">
-                                      <input name="radios" id="radios-3" value="2" type="radio">
+                                  <label class="radio inline" for="radiosssss-1">
+                                      <input name="radios2" id="radios-3" value="2" type="radio">
                                       NO
                                   </label>    
                               </div>
@@ -221,12 +221,12 @@
                         ¿Toma más de 5 cucharillas al día de azúcar blanco refinado?</td>
                         <td><div class="control-group">
                           <div class="controls">
-                            <label class="radio inline" for="radios-0">
-                              <input name="radios" id="radios-0" value="1"  type="radio">
+                            <label class="radio inline" for="radiosssss-0">
+                              <input name="radios3" id="radios-4" value="1"  type="radio">
                               Sí
                           </label>
-                          <label class="radio inline" for="radios-1">
-                              <input name="radios" id="radios-1" value="2" type="radio">
+                          <label class="radio inline" for="radiosssss-1">
+                              <input name="radios3" id="radios-5" value="2" type="radio">
                               NO
                           </label>    
                       </div>
@@ -238,12 +238,12 @@
                     ¿Come carne todos los días?</td>
                     <td><div class="control-group">
                       <div class="controls">
-                        <label class="radio inline" for="radios-0">
-                          <input name="radios" id="radios-0" value="1"  type="radio">
+                        <label class="radio inline" for="radiosssss-0">
+                          <input name="radios4" id="radios-6" value="1"  type="radio">
                           Sí
                       </label>
-                      <label class="radio inline" for="radios-1">
-                          <input name="radios" id="radios-1" value="2" type="radio">
+                      <label class="radio inline" for="radiosssss-1">
+                          <input name="radios4" id="radios-7" value="2" type="radio">
                           NO
                       </label>    
                   </div>
@@ -255,12 +255,12 @@
             ¿Come cereales más de dos veces al día?</td>
             <td><div class="control-group">
               <div class="controls">
-                <label class="radio inline" for="radios-0">
-                  <input name="radios" id="radios-0" value="1"  type="radio">
+                <label class="radio inline" for="radiosssss-0">
+                  <input name="radios5" id="radios-8" value="1"  type="radio">
                   Sí
               </label>
-              <label class="radio inline" for="radios-1">
-                  <input name="radios" id="radios-1" value="2" type="radio">
+              <label class="radio inline" for="radiosssss-1">
+                  <input name="radios5" id="radios-9" value="2" type="radio">
                   NO
               </label>    
           </div>
@@ -272,12 +272,12 @@
         ¿Fuma un paquete o más de cigarrillos al día?.</td>
         <td><div class="control-group">
           <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios6" id="radios-10" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios6" id="radios-11" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -289,12 +289,12 @@
         Se siente estresado, nervioso, irritable?</td>
         <td><div class="control-group">
           <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios7" id="radios-12" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios7" id="radios-13" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -306,12 +306,12 @@
         ¿Siente frío, más a menudo que las demás personas ?</td>
         <td><div class="control-group">
           <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios8" id="radios-14" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios8" id="radios-15" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -323,12 +323,12 @@
         ¿Se siente cansado, fatigado?</td>
         <td><div class="control-group">
           <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios9" id="radios-16" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios9" id="radios-17" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -340,12 +340,12 @@
         ¿Se asusta fácilmente?</td>
         <td><div class="control-group">
           <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios10" id="radios-18" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios10" id="radios-19" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -357,12 +357,12 @@
         ¿Cualquier dolor leve le resulta insoportable?</td>
         <td><div class="control-group">
           <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-20">
+              <input name="radios11" id="radios-20" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-21">
+              <input name="radios11" id="radios-21" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -374,12 +374,12 @@
         ¿Tiene el pelo débil, con caída?</td>
         <td><div class="control-group">
           <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-22">
+              <input name="radios12" id="radios-22" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-23">
+              <input name="radios12" id="radios-23" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -391,12 +391,12 @@
         ¿Se le rompen las uñas con facilidad?</td>
         <td><div class="control-group">
           <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios13" id="radios-24" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios13" id="radios-25" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -408,12 +408,12 @@
         ¿ Tiene los pies y las manos frías?</td>
         <td><div class="control-group">
           <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios14" id="radios-26" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios14" id="radios-27" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -425,12 +425,12 @@
         ¿Sufre de cálculos renales o biliares?</td>
         <td><div class="control-group">
           <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios15" id="radios-28" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios15" id="radios-29" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -442,12 +442,12 @@
         ¿Sufre de estómago?</td>
         <td><div class="control-group">
           <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios16" id="radios-30" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios16" id="radios-31" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -459,12 +459,12 @@
         ¿Sufre de reumatismos?</td>
         <td><div class="control-group">
           <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios17" id="radios-32" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios17" id="radios-33" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -476,12 +476,12 @@
         ¿Tiene diabetes?</td>
         <td><div class="control-group">
           <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios18" id="radios-34" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios18" id="radios-35" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -493,12 +493,12 @@
         ¿Sufre ezcemas?</td>
         <td><div class="control-group">
           <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios19" id="radios-36" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios19" id="radios-37" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -509,12 +509,12 @@
     <td>
         ¿Bebe menos de un litro de agua al día?</td><td><div class="control-group">
         <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios20" id="radios-38" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios20" id="radios-39" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -523,7 +523,7 @@
 </tr>
 </table>
 <p>
-    <strong>TOTALES SI: </strong>
+    <strong>TOTALES SI: <span id="totalsi"></span></strong>
 </p>
 <p>
     Inferior a 5 = Tendencia leve a la acidificación, vida sana
@@ -557,12 +557,12 @@
                 <td>
                     <div class="control-group">
                     <div class="controls">
-                        <label class="radio inline" for="radios-0">
-                          <input name="radios" id="radios-0" value="1"  type="radio">
+                        <label class="radio inline" for="radiosssss-0">
+                          <input name="radios1" id="radios-40" value="1"  type="radio">
                           Sí
                       </label>
-                      <label class="radio inline" for="radios-1">
-                          <input name="radios" id="radios-1" value="2" type="radio">
+                      <label class="radio inline" for="radiosssss-1">
+                          <input name="radios1" id="radios-41" value="2" type="radio">
                           NO
                       </label>    
                   </div>
@@ -576,12 +576,12 @@
         <td>
             <div class="control-group">
             <div class="controls">
-                <label class="radio inline" for="radios-0">
-                  <input name="radios" id="radios-0" value="1"  type="radio">
+                <label class="radio inline" for="radiosssss-0">
+                  <input name="radios2" id="radios-42" value="1"  type="radio">
                   Sí
               </label>
-              <label class="radio inline" for="radios-1">
-                  <input name="radios" id="radios-1" value="2" type="radio">
+              <label class="radio inline" for="radiosssss-1">
+                  <input name="radios2" id="radios-43" value="2" type="radio">
                   NO
               </label>    
           </div>
@@ -595,12 +595,12 @@
     <td>
         <div class="control-group">
         <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios3" id="radios-44" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios3" id="radios-45" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -614,12 +614,12 @@
     <td>
         <div class="control-group">
         <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios4" id="radios-46" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios4" id="radios-47" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -633,12 +633,12 @@
     <td>
         <div class="control-group">
         <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios5" id="radios-48" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios5" id="radios-49" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -652,12 +652,12 @@
     <td>
         <div class="control-group">
         <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios6" id="radios-50" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios6" id="radios-51" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -671,12 +671,12 @@
     <td>
         <div class="control-group">
         <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios7" id="radios-52" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios7" id="radios-53" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -690,12 +690,12 @@
     <td>
         <div class="control-group">
         <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios8" id="radios-54" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios8" id="radios-55" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -709,12 +709,12 @@
     <td>
         <div class="control-group">
         <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1"  type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios9" id="radios-56" value="1"  type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios9" id="radios-57" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -728,12 +728,12 @@
     <td>
         <div class="control-group">
         <div class="controls">
-            <label class="radio inline" for="radios-0">
-              <input name="radios" id="radios-0" value="1" type="radio">
+            <label class="radio inline" for="radiosssss-0">
+              <input name="radios10" id="radios-58" value="1" type="radio">
               Sí
           </label>
-          <label class="radio inline" for="radios-1">
-              <input name="radios" id="radios-1" value="2" type="radio">
+          <label class="radio inline" for="radiosssss-1">
+              <input name="radios10" id="radios-59" value="2" type="radio">
               NO
           </label>    
       </div>
@@ -769,3 +769,40 @@
 </div><!-- /ficha -->
 </div><!-- /row-fluid -->    	
 </div>
+<?php Yii::app()->getClientScript()->registerScript("calcularAci",
+    "
+    $(document).ready(function(){
+        var si = 0;
+        var no = 0;        
+        //$('#totalsi').html(si);
+      
+        $('input:radio').change(function(){            
+            var si = 0;
+            var no = 0;    
+            var respuesta = $(this).val();          
+
+            var radios = $('input:radio:checked').val();
+
+            //console.log(radios);
+
+            $('input:checked').each(function () {
+                switch ( $(this).val() ) {
+                    case '1':
+                        thissi = parseInt(si);                    
+                        si = si + thissi;       
+                        console.log( $(this).val(si) );                
+                        break;
+                    case 2:
+                        ++no;                        
+                        break;                    
+                    default:
+  
+                        break;
+                }
+            });
+            $('#totalsi').html(si);            
+
+            var mayor = Math.max(si, no);           
+        }); 
+    });
+    ",CClientScript::POS_LOAD)  ?>
