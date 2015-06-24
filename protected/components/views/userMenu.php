@@ -6,5 +6,7 @@
 	<li <?php if( strcmp(Yii::app()->controller->action->id,'peso') == 0 ): ?> class="active" <?php endif; ?>><?php echo CHtml::link('Peso',array('user/peso/id/'.$id_usuario));?></li>	
 	<li <?php if( strcmp(Yii::app()->controller->action->id,'tratamiento') == 0 ): ?> class="active" <?php endif; ?>><?php echo CHtml::link('Tratamientos',array('user/tratamiento/id/'.$id_usuario));?></li>
 	<li <?php if( strcmp(Yii::app()->controller->action->id,'recomendar') == 0 ): ?> class="active" <?php endif; ?>><?php echo CHtml::link('Productos Recom.',array('user/recomendar/id/'.$id_usuario));?></li>		
-	<li <?php if( strcmp(Yii::app()->controller->id,'silhowell') == 0 ): ?> class="active" <?php endif; ?>><?php echo CHtml::link('Silhowell',array('silhowell/ver/id/'.$id_usuario));?></li>		    		
+	<li <?php if( strcmp(Yii::app()->controller->id,'silhowell') == 0 ): ?> class="active" <?php endif; ?>><?php echo CHtml::link('Silhowell',array('silhowell/ver/id/'.$id_usuario));?></li>
+	<li <?php if( strcmp(Yii::app()->controller->id,'ph') == 0 ): ?> class="active" <?php endif; ?>><?php echo CHtml::link('Valoración PH',array('ph/index/id/'.$id_usuario));?></li>		    		
+</ul>		    		
 </ul>

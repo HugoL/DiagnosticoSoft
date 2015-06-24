@@ -791,3 +791,8 @@ div.product-chooser{
 .rememberme input{
   width: auto !important;
 }
+.valoracionph p{
+  font-size: 15px;
+  color: #555;
+  line-height: 25px;
+}
