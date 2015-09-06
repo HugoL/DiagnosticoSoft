@@ -19,13 +19,7 @@
 		<?php echo $form->labelEx($model,'nombre'); ?>
 		<?php echo $form->textField($model,'nombre',array('class'=>'span8','maxlength'=>256)); ?>
 		<?php echo $form->error($model,'nombre'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'descripcion'); ?>
-		<?php echo $form->textField($model,'descripcion',array('class'=>'span12','maxlength'=>512)); ?>
-		<?php echo $form->error($model,'descripcion'); ?>
-	</div>
+	</div>	
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'contenido'); ?>
@@ -41,15 +35,17 @@
     )); ?>
 		<?php echo $form->error($model,'contenido'); ?>
 	</div>
+	<div class="clearfix">&nbsp;</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'activo'); ?>
-		<?php echo $form->textField($model,'activo'); ?>
+		<p><small>Si se selecciona "No visible" el producto no aparecerá en el listado de productos</small></p>
+
+		<?php echo $form->dropDownList($model,'activo',array(1 => 'Visible', 0 => 'No Visible')); ?>
 		<?php echo $form->error($model,'activo'); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear producto' : 'Guardar',array('class'=> 'btn btn-primary btn-large')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

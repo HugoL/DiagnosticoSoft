@@ -28,15 +28,15 @@ class ProductoController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array(),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('view','create','update','listado'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('index','admin','delete'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -51,6 +51,9 @@ class ProductoController extends Controller
 	 */
 	public function actionView($id)
 	{
+		//$this->layout='column1';
+		$this->layout='//layouts/column1';
+		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -122,10 +125,25 @@ class ProductoController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Producto');
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'activo = 1';
+		$dataProvider=new CActiveDataProvider('Producto',array('criteria' => $criteria));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+	}
+
+	public function actionListado( $id ){
+
+		$profile = Profile::model()->findByPk($id);
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'activo = 1';
+		$productos = Producto::findAll('Producto',array('criteria' => $criteria));
+		$this->render('listado',array(
+			'productos'=>$productos,
+			'user'=>$profile
+		));
+	
 	}
 
 	/**
