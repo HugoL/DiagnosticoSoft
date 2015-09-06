@@ -32,7 +32,7 @@ class ProductoController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('view','create','update','listado'),
+				'actions'=>array('view','create','update','listado','detalle'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -56,6 +56,19 @@ class ProductoController extends Controller
 		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+		));
+	}
+
+	public function actionDetalle($id, $id_cliente)
+	{
+		//$this->layout='column1';
+		$this->layout='//layouts/column1';
+
+		$profile = Profile::model()->findByPk($id, $id_cliente);
+		
+		$this->render('detalle',array(
+			'model'=>$this->loadModel($id),
+			'user'=>$profile
 		));
 	}
 
@@ -134,11 +147,12 @@ class ProductoController extends Controller
 	}
 
 	public function actionListado( $id ){
+		$this->layout='//layouts/column1';
 
 		$profile = Profile::model()->findByPk($id);
 		$criteria = new CDbCriteria;
 		$criteria->condition = 'activo = 1';
-		$productos = Producto::findAll('Producto',array('criteria' => $criteria));
+		$productos = Producto::model()->findAll();
 		$this->render('listado',array(
 			'productos'=>$productos,
 			'user'=>$profile

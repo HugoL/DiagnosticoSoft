@@ -5,19 +5,19 @@
     				'icon'=>'arrow-left white',
     				'url'=>array('user/listarHijos'),
     				'toggle'=>false,
-    				)); ?></center></div>    		
+    				)); ?></center></div> <br/>   		
 <h1>Ficha de <?php echo  CHtml::encode($user->firstname." ".$user->lastname); ?></h1>
 
 <div class="row-fluid ficha">
 <div class="ficha">
    <?php  $this->widget('UserMenu',array('id_usuario'=>$user->user_id)); ?>
    <div class="contenido container productos">
-   		<h3>Tratamientos del cliente:</h3>
+   		<h3>Productos disponibles:</h3>
 			<table class="table">				
 		   		<?php foreach ($productos as $key => $producto): ?>
 		   			<tr>
 		   				<td><?php echo $producto->nombre; ?></td>
-		   				<td><?php echo CHtml::link('Ver producto',array('view/id/'.$producto->id)); ?></td>
+		   				<td><?php echo CHtml::link('Ver producto',array('producto/detalle/id/'.$producto->id.'/id_cliente/'.$user->user_id),array('class'=>'btn btn-info')); ?></td>
 		   			</tr>
 		   		<?php endforeach; ?>
 		   	</table>
