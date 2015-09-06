@@ -57,6 +57,19 @@
             </div>
             </div></center>
         </div>
+
+        <div class="span4">
+            <center><div class="product-chooser-item">
+                <div class="well">
+                 <a href="<?php echo Yii::app()->baseUrl.'/user/producto'; ?>"><img src="<?php echo Yii::app()->baseUrl ?>/images/preferencias.png" class="img-rounded" alt="Perfil"></a>
+                <div class="col-xs-8 col-sm-8 col-md-12 col-lg-12">
+                    <span class="title">Producto</span>
+                    <span class="description">Crear y modificar productos</span>
+                </div>
+            </div>
+            </div></center>
+        </div>
+
          <div class="span4">
             <center><div class="product-chooser-item">
                 <div class="well">
