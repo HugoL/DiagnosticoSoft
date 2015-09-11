@@ -8,7 +8,7 @@
     				'toggle'=>false,
     				)); ?></center></div>
     		<?php if( !empty($user) ): ?>
-    			<h1>Ficha de <?php echo $user->profile->firstname." ".$user->profile->lastname; ?></h1>
+    			<h1>Ficha deee <?php echo $user->profile->firstname." ".$user->profile->lastname; ?></h1>
     			<div class="row-fluid">
     				<div class="ficha">    					
 					<?php  $this->widget('UserMenu',array('id_usuario'=>$user->profile->user_id)); ?>

@@ -14,6 +14,7 @@
         </div>
     </form>
 </div>
+
 <div class="row-fluid"><center><?php $this->widget('bootstrap.widgets.TbButton', array(
 		'label'=>'Nuevo Cliente',
     				'type'=>'info', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'

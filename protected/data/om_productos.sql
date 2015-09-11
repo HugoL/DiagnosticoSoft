@@ -22,6 +22,7 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+USE hlangabd;
 --
 -- Estructura de tabla para la tabla `om_productos`
 --

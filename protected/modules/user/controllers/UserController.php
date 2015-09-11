@@ -121,7 +121,7 @@ class UserController extends Controller
 				}
 				$rol = Rol::model()->findbyPk($user->profile->rol);
 				
-				if( !Yii::app()->getModule('user')->esAlgunAdmin() ){
+				if( Yii::app()->getModule('user')->esCliente() ){
 					$this->render('verUsuarioCliente', array('user'=>$user, 'model' => $profile, 'rol'=>$rol,'edad'=>$edad));
 				}else{
 					$this->render('verUsuario', array('user'=>$user, 'model' => $profile, 'rol'=>$rol,'edad'=>$edad));

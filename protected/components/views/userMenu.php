@@ -9,5 +9,4 @@
 	<li <?php if( strcmp(Yii::app()->controller->id,'silhowell') == 0 ): ?> class="active" <?php endif; ?>><?php echo CHtml::link('Silhowell',array('silhowell/ver/id/'.$id_usuario));?></li>
 	<li <?php if( strcmp(Yii::app()->controller->id,'ph') == 0 ): ?> class="active" <?php endif; ?>><?php echo CHtml::link('Valoración PH',array('ph/index/id/'.$id_usuario));?></li>	
 	<li <?php if( strcmp(Yii::app()->controller->id,'producto') == 0 ): ?> class="active" <?php endif; ?>><?php echo CHtml::link('Productos',array('producto/listado/id/'.$id_usuario));?></li>		    		
-</ul>		    		
 </ul>

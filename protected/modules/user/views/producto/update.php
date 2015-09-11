@@ -9,13 +9,13 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Producto', 'url'=>array('index')),
-	array('label'=>'Create Producto', 'url'=>array('create')),
-	array('label'=>'View Producto', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Producto', 'url'=>array('admin')),
+	array('label'=>'Listado de Productos', 'url'=>array('index')),
+	array('label'=>'Nuevo Producto', 'url'=>array('create')),
+	array('label'=>'Ver Producto', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Modificar Producto', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Producto <?php echo $model->id; ?></h1>
+<h1>Modificar Producto</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

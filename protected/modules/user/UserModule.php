@@ -224,6 +224,15 @@ class UserModule extends CWebModule
 		  	}
 		  	return false;
 	}
+
+	public static function esCliente() {
+		 $rolCliente = Rol::model()->find('nombre=:nombre',array('nombre' => 'cliente'));		
+		 $rol = Yii::app()->getModule('user')->user()->profile->rol;
+		  	if( $rol == $rolCliente->id ){
+		  		return true;
+		  	}
+		  	return false;
+	}
 	
 	/**
 	 * Send mail method

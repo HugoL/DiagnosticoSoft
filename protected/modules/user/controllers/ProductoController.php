@@ -64,7 +64,7 @@ class ProductoController extends Controller
 		//$this->layout='column1';
 		$this->layout='//layouts/column1';
 
-		$profile = Profile::model()->findByPk($id, $id_cliente);
+		$profile = Profile::model()->findByPk($id_cliente);
 		
 		$this->render('detalle',array(
 			'model'=>$this->loadModel($id),
@@ -152,7 +152,7 @@ class ProductoController extends Controller
 		$profile = Profile::model()->findByPk($id);
 		$criteria = new CDbCriteria;
 		$criteria->condition = 'activo = 1';
-		$productos = Producto::model()->findAll();
+		$productos = Producto::model()->findAll($criteria);
 		$this->render('listado',array(
 			'productos'=>$productos,
 			'user'=>$profile
